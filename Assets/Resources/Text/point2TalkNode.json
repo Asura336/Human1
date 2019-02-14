@@ -1,0 +1,38 @@
+[
+    {
+        "id": "0",
+        "next": "1",
+        "talkStrs": "测试内容……",
+        "nodeCall": ""
+    },
+    {
+        "id": "1",
+        "next": "2",
+        "talkStrs": "所以……",
+        "nodeCall": ""
+    },
+    {
+        "id": "2",
+        "next": "-1",
+        "talkStrs": "是对话完成的时候了。",
+        "nodeCall": "self goto 10"
+    },
+    {
+        "id": "10",
+        "next": "11",
+        "talkStrs": "第二段对话……",
+        "nodeCall": ""
+    },
+    {
+        "id": "11",
+        "next": "12",
+        "talkStrs": "所以……",
+        "nodeCall": ""
+    },
+    {
+        "id": "12",
+        "next": "-1",
+        "talkStrs": "是判断条件检测的时候了。",
+        "nodeCall": ""
+    }
+]
