@@ -9,8 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4927705841075942}
-  - component: {fileID: 20128513036075716}
-  - component: {fileID: 81882136009169180}
   - component: {fileID: 114952176968945660}
   m_Layer: 0
   m_Name: Simple Camera
@@ -29,21 +27,84 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 5201732866578138839}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &20128513036075716
-Camera:
+--- !u!114 &114952176968945660
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519108530557808}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1dbbadaf33ccec40bad6eeb17f82cb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraNode: {fileID: 0}
+  initRadius: 2
+  isControlable: 1
+  center: {fileID: 0}
+  centerOffset: {x: 0, y: 1, z: 0}
+  alphaSpeed: 360
+  sigmaSpeed: 360
+  sigmaMax: 120
+  sigmaMin: 30
+  lerpFollow: 0.25
+  slerpRotate: 0.25
+  suitLandform: 1
+  minRadius: 0.2
+  raycastLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  _showCursur: 1
+--- !u!1 &985627909274906099
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5201732866578138839}
+  - component: {fileID: 1200940300908878340}
+  - component: {fileID: 740382407822625153}
+  - component: {fileID: 6097618194228193309}
+  m_Layer: 2
+  m_Name: CameraNode
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5201732866578138839
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985627909274906099}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4927705841075942}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &1200940300908878340
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985627909274906099}
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 0}
+  m_BackGroundColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -60,7 +121,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -75,39 +136,28 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &81882136009169180
+--- !u!81 &740382407822625153
 AudioListener:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1519108530557808}
+  m_GameObject: {fileID: 985627909274906099}
   m_Enabled: 1
---- !u!114 &114952176968945660
+--- !u!114 &6097618194228193309
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1519108530557808}
+  m_GameObject: {fileID: 985627909274906099}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1dbbadaf33ccec40bad6eeb17f82cb8, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cf6e429a97b6a2418bb22ea985ca37d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initRadius: 2
-  isControlable: 1
-  center: {fileID: 0}
-  centerOffset: {x: 0, y: 1, z: 0}
-  alphaSpeed: 360
-  sigmaSpeed: 360
-  sigmaMax: 120
-  sigmaMin: 15
-  lerpFollow: 0.25
-  slerpRotate: 0.25
-  suitLandform: 1
-  minRadius: 0.2
-  raycastLayer:
+  raycastDis: 10
+  seekLayer:
     serializedVersion: 2
-    m_Bits: 1024
-  _showCursur: 1
+    m_Bits: 4096
+  trigTime: 1
