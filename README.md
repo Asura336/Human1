@@ -49,6 +49,7 @@
     - CameraSeek 类作为绑定在相机上的组件，向相机看向的方向从屏幕正中发出射线，模拟玩家的注视动作，与 VisibilityChanger 类联动，可设置注视开始到触发的时间。
     - VisibilityChanger 为改变子物体可见性的组件，必须与触发器共存。初始化时可设置 VisibilityChanger.initVisibility 字段改变初始状态的可见性，运行时改变 VisibilityChanger.IsTrig 属性使可见性从有到无或者从无到有。用于生成”注视之下消失“或者”注视之下出现“的场景物件。
 - <date = Jan 23> 增加随机生成的迷宫，和迷宫墙壁模型。迷宫单元数量 16 * 9（宽 * 高）。
+    - <date = Feb 12> 迷宫单元数量为 16 * 16，包含一个 6 * 6 的空窗。
 - <date = Jan 25> CameraSeek 组件可以同时检测多个物体；VisibilityChanger 组件增加专有图层 VcRaycastField，提升检测效率；相机组件增加了将位置转向目标背后的功能。
 - <date = Jan 28> 
     - 增加可互动物件 InteractObject 类的新策略 ColorSpring，无颜色的玩家角色靠近时可以互动，为玩家提供特定种类的颜色。
