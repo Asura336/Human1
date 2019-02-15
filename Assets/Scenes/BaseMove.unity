@@ -837,7 +837,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 260196286}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.75, y: 10.5, z: -6.75}
+  m_LocalPosition: {x: 10.75, y: 10.5, z: -4.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 881633841}
@@ -856,7 +856,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trans_exit: {fileID: 630621777}
-  simpleCamera: {fileID: 0}
 --- !u!65 &260196289
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -865,10 +864,10 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 260196286}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 1, z: 5}
+  m_Size: {x: 5, y: 1, z: 0.02}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &301791481
 GameObject:

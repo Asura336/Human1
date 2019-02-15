@@ -21,7 +21,8 @@ public class TransPos : MonoBehaviour
             Debug.LogWarning("trans_exit is NULL");
             trans_exit = transform;
         }
-        simpleCamera = LevelManager.Instance.p_camera;
+        simpleCamera = LevelManager.Instance != null ? 
+            LevelManager.Instance.p_camera : FindObjectOfType<SimpleCameraFreeLook>();
 
         selfCollider = GetComponent<BoxCollider>();
         selfCollider.isTrigger = true;
