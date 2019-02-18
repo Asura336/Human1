@@ -47,31 +47,21 @@ public class Controller : MonoBehaviour
             && !enteractLock
             && GlobalHub.Instance.p_enteract != null)
         {
-            EnteractLock(0.25f);
+            EnteractLock();
             GlobalHub.Instance.p_enteract.ActDo();
         }
     }
 
-    void PauseControl(float waitTime)
-    {
-        StartCoroutine(_PauseControl(waitTime));
-    }
-    IEnumerator _PauseControl(float waitTime)
-    {
-        isControlable = false;
-        yield return new WaitForSeconds(waitTime);
-        isControlable = true;
-    }
-
     bool enteractLock = false;
-    void EnteractLock(float waitTime)
+    WaitForSeconds enteractWaitCache = new WaitForSeconds(0.25f);
+    void EnteractLock()
     {
-        StartCoroutine(_EnteractLock(waitTime));
+        StartCoroutine(_EnteractLock());
     }
-    IEnumerator _EnteractLock(float waitTime)
+    IEnumerator _EnteractLock()
     {
         enteractLock = true;
-        yield return new WaitForSeconds(waitTime);
+        yield return enteractWaitCache;
         enteractLock = false;
     }
 }

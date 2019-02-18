@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RandMaze;
@@ -97,7 +98,6 @@ public class Maze : MonoBehaviour
         return wallPrefab;  // 废案：复数种类的迷宫墙体预制件
     }
 
-    delegate bool DelI2B(int p);
     /// <summary>
     /// 为一个点实例化四周墙体
     /// </summary>
@@ -109,7 +109,7 @@ public class Maze : MonoBehaviour
         int cell = dMaze.Maze[p];
         GameObject p_obj = null;
 
-        DelI2B onEdge = delegate (int point)
+        Func<int, bool> onEdge = delegate (int point)
         {
             return outEdge && (!enterOpen || point != p_enter) && (!exitOpen || point != p_exit);
         };

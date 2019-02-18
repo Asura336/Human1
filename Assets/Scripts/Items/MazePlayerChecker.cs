@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RandMaze;
@@ -27,8 +28,6 @@ public class MazePlayerChecker : MonoBehaviour
     readonly int infinity = Maze.infinity;
     readonly float cellHeight = Maze.cellHeight;
     readonly float cellWidth = Maze.cellWidth;
-    delegate int DelToPoint(int x, int y);
-    delegate (int, int) DelPos2Point(Vector3 v);
     readonly WaitForSeconds checkWait = new WaitForSeconds(0.75f);
     readonly string[] dirs = new string[] { "up", "right", "down", "left", "dead way" };
     IEnumerator CheckPosition(Transform player)
@@ -36,8 +35,8 @@ public class MazePlayerChecker : MonoBehaviour
         Vector3 selfPos = selfTransform.position;
         int[] graph = dMaze.Maze;
         int[] DistGraph = maze.DistGraph;
-        DelToPoint toPoint = dMaze.ToPoint;
-        DelPos2Point Pos2Point = Maze.Pos2Point;
+        Func<int, int, int> toPoint = dMaze.ToPoint;
+        Func<Vector3, (int, int)> pos2Point = Maze.Pos2Point;
         float mazeHeight = dMaze.XCount * cellHeight;
         float mazeWidth = dMaze.YCount * cellWidth;
         while (true)
@@ -47,7 +46,7 @@ public class MazePlayerChecker : MonoBehaviour
                 playerZ > selfPos.z && playerZ < selfPos.z + mazeWidth;
             if (inSide)
             {
-                (int x, int y) = Pos2Point(player.position - selfTransform.position);
+                (int x, int y) = pos2Point(player.position - selfTransform.position);
 
                 if (dMaze.Hole[toPoint(x, y)])
                 {
