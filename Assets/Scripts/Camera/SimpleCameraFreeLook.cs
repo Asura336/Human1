@@ -3,17 +3,18 @@
 public class SimpleCameraFreeLook : MonoBehaviour
 {
     Transform selfTransform;
+    [Header("_相机应挂在子节点，子节点旋转角可调_")]
     public Camera cameraNode;
     Transform cameraTrans;
     float alpha;  // 横向角, 规定为与 x 轴的夹角
     float sigma;  // 纵向角，规定为与 y 轴的夹角
     float radius;  // 相机跟随人物的实际半径
-    public float initRadius = 10;
+    public float maxRadius = 10;
     Vector3 orderTrans;  // 保存镜头目标位置
     Vector3 dir = Vector3.back;  // 从被观察点到镜头的矢量
     public bool isControlable = true;
 
-    [Header("_依次为观察目标的中心点、偏移量、横向和纵向旋转速度(表示为角度)_")]
+    [Header("_目标的中心点、偏移量、横向和纵向旋转速度(表示为角度)_")]
     public Transform center;
     public Vector3 centerOffset;
     public float alphaSpeed = 360;
@@ -48,7 +49,7 @@ public class SimpleCameraFreeLook : MonoBehaviour
     [SerializeField, Range(0, 1f)] float lerpFollow = 0.25f;
     [SerializeField, Range(0, 1f)] float slerpRotate = 0.25f;
 
-    [Header("_勾选此项时镜头将随地形调整位置，可设置镜头的最短距离_")]
+    [Header("_勾选此项时镜头将随地形调整位置，可设置最短跟随半径_")]
     public bool suitLandform = true;
     public float minRadius = 2;
     public LayerMask raycastLayer;
@@ -93,7 +94,7 @@ public class SimpleCameraFreeLook : MonoBehaviour
         _sigmaSpeed = sigmaSpeed / 180 * Mathf.PI;
         _sigmaMax = Mathf.Min(sigmaMax / 180 * Mathf.PI, _sigmaMax);
         _sigmaMin = Mathf.Max(sigmaMin / 180 * Mathf.PI, _sigmaMin);
-        radius = initRadius;
+        radius = maxRadius;
 
         ShowCursur = _showCursur;
     }
@@ -118,34 +119,33 @@ public class SimpleCameraFreeLook : MonoBehaviour
 
     private void FixedUpdate()
     {
-        radius = initRadius;
+        radius = maxRadius;
         if (!suitLandform) { return; }
         Ray ray = new Ray(Center, selfTransform.position - Center);
-        if (Physics.Raycast(ray, out RaycastHit hit, initRadius, raycastLayer))
+        if (Physics.Raycast(ray, out RaycastHit hit, maxRadius, raycastLayer))
         {
             radius = Mathf.Min(
-                Vector3.Distance(Center, hit.point), initRadius);
+                Vector3.Distance(Center, hit.point), maxRadius);
         }        
     }
 
     private void LateUpdate()
     {
         // 位置跟随
-        orderTrans = Center + dir * initRadius;
+        orderTrans = Center + dir * maxRadius;
         selfTransform.position = Vector3.Lerp(selfTransform.position, orderTrans, lerpFollow);
         // 视角跟随
         var newForward = Quaternion.LookRotation(Center - selfTransform.position);
         selfTransform.rotation = Quaternion.Slerp(selfTransform.rotation, newForward, slerpRotate);
 
-        cameraTrans.position = Vector3.Lerp(Center, selfTransform.position, radius / initRadius);
-        cameraTrans.rotation = selfTransform.rotation;
+        cameraTrans.position = Vector3.Lerp(Center, selfTransform.position, radius / maxRadius);
     }
 
     void Init()
     {
         alpha = -Mathf.PI / 2;
         sigma = Mathf.PI / 2;
-        orderTrans = Center + dir * initRadius;
+        orderTrans = Center + dir * maxRadius;
         selfTransform.position = orderTrans;
     }
 
@@ -157,7 +157,7 @@ public class SimpleCameraFreeLook : MonoBehaviour
         dir = new Vector3(Mathf.Cos(alpha) * Mathf.Sin(sigma),
                                  Mathf.Cos(sigma),
                                  Mathf.Sin(alpha) * Mathf.Sin(sigma));
-        orderTrans = Center + dir * initRadius;
+        orderTrans = Center + dir * maxRadius;
         selfTransform.position = orderTrans;
         var newForward = Quaternion.LookRotation(Center - selfTransform.position);
         selfTransform.rotation = newForward;
