@@ -41,7 +41,6 @@ public sealed class PlayerAct : BaseAct
 
     #endregion
 
-    Renderer m_renderer;
     Transform selfTransform;
 
     protected override void Start()
@@ -51,11 +50,10 @@ public sealed class PlayerAct : BaseAct
         defaultCenter = cc.center;
         footOffset = Vector3.up * offset;
 
-        m_renderer = GetComponentInChildren<Renderer>();
-        if (GlobalHub.Instance != null)
-        {
-            GlobalHub.Instance.p_playerRenderer = m_renderer;
-        }
+        var gi = GlobalHub.Instance;
+        Renderer m_renderer = GetComponentInChildren<Renderer>();
+        gi.p_playerMaterial = m_renderer.material;
+        gi.PlayerColorType = (COLOR_TYPE)gi.Url2Point["Player"];
     }
 
     protected override void Update()

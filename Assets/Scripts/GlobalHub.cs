@@ -37,7 +37,7 @@ public class GlobalHub
     /// <summary>
     /// 玩家的材质引用
     /// </summary>
-    public Renderer p_playerRenderer;  // 在类外赋值
+    public Material p_playerMaterial;  // 在类外赋值
 
     COLOR_TYPE _playerColorType = COLOR_TYPE.NULL;
     /// <summary>
@@ -48,10 +48,11 @@ public class GlobalHub
         get { return _playerColorType; }
         set
         {
-            if (p_playerRenderer != null)
+            if (_playerColorType != value)
             {
                 _playerColorType = value;
-                p_playerRenderer.material.color = colorTypes[value];
+                Url2Point["Player"] = (int)value;
+                p_playerMaterial.color = colorTypes[value];
             }
         }
     }
@@ -104,11 +105,13 @@ public class GlobalHub
 
         // TODO:
         // 从序列化文件建立玩家信息和有唯一标识的物件 Point 预设值
-        PlayerColorType = COLOR_TYPE.NULL;
         PlayerPos = initPlayerPos;
         PlayerForward = initPlayerForward;
         PlayerScene = initPlayerScene;
-        Url2Point = new Dictionary<string, int>();
+        Url2Point = new Dictionary<string, int>()
+        {
+            {"Player", (int)COLOR_TYPE.NULL}
+        };
     }
 
     public void OnGameSave()

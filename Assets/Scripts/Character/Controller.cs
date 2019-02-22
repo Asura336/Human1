@@ -43,9 +43,7 @@ public class Controller : MonoBehaviour
         newForward.y = 0;
         if (h != 0 || v != 0) { player.Rotate(newForward.normalized); }
 
-        if ((Input.GetMouseButtonUp(0)||Input.GetKeyUp(KeyCode.E))
-            && !enteractLock
-            && GlobalHub.Instance.p_enteract != null)
+        if ((Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.E)) && !enteractLock)
         {
             EnteractLock();
             GlobalHub.Instance.p_enteract.ActDo();
@@ -53,7 +51,7 @@ public class Controller : MonoBehaviour
     }
 
     bool enteractLock = false;
-    WaitForSeconds enteractWaitCache = new WaitForSeconds(0.25f);
+    readonly WaitForSeconds enteractWaitCache = new WaitForSeconds(0.25f);
     void EnteractLock()
     {
         StartCoroutine(_EnteractLock());

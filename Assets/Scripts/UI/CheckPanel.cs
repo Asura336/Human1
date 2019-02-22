@@ -41,13 +41,13 @@ public class CheckPanel : UIBehaviour, IEventListener
         {
             case ENTERACT_TYPE.CLR_EXC:
                 selfText.text = "交换颜色";
-                bool enteractAwake = (gi.p_enteract != null && gi.p_playerRenderer != null &&
+                bool enteractAwake = (gi.p_enteract != null && gi.p_playerMaterial != null &&
                     gi.p_enteract.Point != (int)gi.PlayerColorType);
                 gameObject.SetActive(enteractAwake);
                 break;
             case ENTERACT_TYPE.CLR_SPR:
                 selfText.text = "触碰色彩源";
-                enteractAwake = (gi.p_enteract != null && gi.p_playerRenderer != null &&
+                enteractAwake = (gi.p_enteract != null && gi.p_playerMaterial != null &&
                     gi.PlayerColorType == COLOR_TYPE.NULL);
                 gameObject.SetActive(enteractAwake);
                 break;
