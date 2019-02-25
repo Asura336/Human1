@@ -143,7 +143,7 @@ public class TalkNode
 
     public override string ToString()
     {
-        return String.Format("\"id\" : {0}, \"next\" : {1}, \"talkStrs\" : {2}, \"nodeCall\" : {3}",
+        return string.Format("\"id\" : {0}, \"next\" : {1}, \"talkStrs\" : {2}, \"nodeCall\" : {3}",
             id, next, talkStrs, nodeCall);
     }
 }
