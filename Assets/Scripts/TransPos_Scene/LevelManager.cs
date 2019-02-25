@@ -50,8 +50,8 @@ public class LevelManager : MonoBehaviour
         p_camera = GetComponentInChildren<SimpleCameraFreeLook>();
         PlayerTrans = p_player.transform;
 
-        var hub = GlobalHub.Instance;        
-        ChangeScene(hub.PlayerScene, hub.PlayerPos, hub.PlayerForward);
+        var gi = GlobalHub.Instance;        
+        ChangeScene(gi.PlayerScene, gi.PlayerPos, gi.PlayerForward);
     }
 
     private void OnDestroy()

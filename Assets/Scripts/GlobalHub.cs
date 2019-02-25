@@ -72,6 +72,7 @@ public class GlobalHub
     public static readonly Vector3 initPlayerPos = new Vector3(1.5f, 0, -2.5f);
     public static readonly Vector3 initPlayerForward = new Vector3(0, 0, 1);
     public const string initPlayerScene = "Level0";
+    public const string savePath = "C:/AppData/";
 
     /// <summary>
     /// 事件指针指向台词节点
@@ -105,6 +106,17 @@ public class GlobalHub
 
         // TODO:
         // 从序列化文件建立玩家信息和有唯一标识的物件 Point 预设值
+        CreateInitSaveFile();
+    }
+
+    public void OnGameSave()
+    {
+        // TODO:
+        // 序列化文件存档的动作
+    }
+
+    public void CreateInitSaveFile()
+    {
         PlayerPos = initPlayerPos;
         PlayerForward = initPlayerForward;
         PlayerScene = initPlayerScene;
@@ -114,10 +126,9 @@ public class GlobalHub
         };
     }
 
-    public void OnGameSave()
+    void ReadSaveFile()
     {
-        // TODO:
-        // 序列化文件存档的动作
+        
     }
 }
 
