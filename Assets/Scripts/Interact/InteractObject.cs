@@ -102,7 +102,6 @@ public class InteractObject : MonoBehaviour, IEnteract, IEventListener
                     Url = url,
                     Point = point,
                     wrap = this,
-                    p_colorGradient = GetComponent<ColorGradient>()
                 };
                 break;
             case ENTERACT_TYPE.TLK:

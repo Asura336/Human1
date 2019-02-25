@@ -1007,7 +1007,7 @@ GameObject:
   - component: {fileID: 584424967}
   - component: {fileID: 584424966}
   m_Layer: 0
-  m_Name: test
+  m_Name: White0Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

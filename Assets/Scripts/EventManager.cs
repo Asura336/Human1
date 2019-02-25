@@ -91,6 +91,7 @@ public enum EVENT_TYPE
     NULL,
     ENTERACT_UI,  // UI 戳显示
     COLOR_ACT,  // 交换颜色的互动
+    COLOR_GRADIENT, // 颜色渐变的物件
     TALK,  // 对话的互动
     NODE_CALL,  // 播放台词节点时产生的事件
     URL_GOTO,  // 对应 URL 的物体改变 Point 字段

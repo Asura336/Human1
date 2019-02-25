@@ -11,7 +11,6 @@ public class ColorSpring : IEnteract
     public Component parent;
     public InteractObject wrap;
     public ENTERACT_TYPE EnteractType { get; set; }
-    public ColorGradient p_colorGradient;
 
     COLOR_TYPE _colorType;
     public int Point
@@ -20,8 +19,7 @@ public class ColorSpring : IEnteract
         set
         {
             _colorType = (COLOR_TYPE)value;
-            selfmaterial.color =
-                GlobalHub.Instance.colorTypes[(COLOR_TYPE)value];
+            selfmaterial.color = GlobalHub.Instance.colorTypes[(COLOR_TYPE)value];
         }
     }
 
@@ -51,7 +49,8 @@ public class ColorSpring : IEnteract
         {
             gl.PlayerColorType = (COLOR_TYPE)Point;
             _colorType = COLOR_TYPE.NULL;
-            p_colorGradient.StartGradient();  // 颜色消失的效果
+            EventManager.Instance.PostNotification(EVENT_TYPE.COLOR_GRADIENT, wrap, Url);
+            GlobalHub.Instance.Url2Point[Url] = Point;
             return 0;  // 成功互动
         }
         return 1; // 失败互动

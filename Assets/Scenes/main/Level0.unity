@@ -1859,6 +1859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16887abdb8c6354bbc71fab665803ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  masterUrl: cTsp_yellow0
   endColor: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
   smooth: 0.05
 --- !u!1 &1974288427
