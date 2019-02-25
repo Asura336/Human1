@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Renderer), typeof(InteractObject))]
+[RequireComponent(typeof(Renderer))]
 public class ColorGradient : MonoBehaviour
 {
     Renderer m_renderer;
