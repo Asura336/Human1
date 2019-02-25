@@ -557,6 +557,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1421642820645682887}
     m_Modifications:
+    - target: {fileID: 1741292974662548, guid: b3cee712edd24754cb1086c058e9131a, type: 3}
+      propertyPath: m_Name
+      value: Player_PlayerAct
+      objectReference: {fileID: 0}
     - target: {fileID: 4458093519723866, guid: b3cee712edd24754cb1086c058e9131a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -601,10 +605,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1741292974662548, guid: b3cee712edd24754cb1086c058e9131a, type: 3}
-      propertyPath: m_Name
-      value: Player_PlayerAct
-      objectReference: {fileID: 0}
     - target: {fileID: 114085948162306510, guid: b3cee712edd24754cb1086c058e9131a,
         type: 3}
       propertyPath: raycastLayer.m_Bits
@@ -645,6 +645,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1421642820645682887}
     m_Modifications:
+    - target: {fileID: 1519108530557808, guid: 438036db5a86e8945b01000b7af71b0e, type: 3}
+      propertyPath: m_Name
+      value: Simple Camera
+      objectReference: {fileID: 0}
     - target: {fileID: 4927705841075942, guid: 438036db5a86e8945b01000b7af71b0e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -689,9 +693,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1519108530557808, guid: 438036db5a86e8945b01000b7af71b0e, type: 3}
-      propertyPath: m_Name
-      value: Simple Camera
+    - target: {fileID: 114952176968945660, guid: 438036db5a86e8945b01000b7af71b0e,
+        type: 3}
+      propertyPath: maxRadius
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114952176968945660, guid: 438036db5a86e8945b01000b7af71b0e,
         type: 3}

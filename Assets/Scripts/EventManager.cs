@@ -94,5 +94,6 @@ public enum EVENT_TYPE
     TALK,  // 对话的互动
     NODE_CALL,  // 播放台词节点时产生的事件
     URL_GOTO,  // 对应 URL 的物体改变 Point 字段
+    ENTERACT_AUDIO,  // 互动动作的音效
     ELSE
 }

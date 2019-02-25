@@ -48,7 +48,7 @@ public class CheckPanel : UIBehaviour, IEventListener
             case ENTERACT_TYPE.CLR_SPR:
                 selfText.text = "触碰色彩源";
                 enteractAwake = (gi.p_enteract != null && gi.p_playerMaterial != null &&
-                    gi.PlayerColorType == COLOR_TYPE.NULL);
+                    gi.p_enteract.Point != (int)COLOR_TYPE.NULL);
                 gameObject.SetActive(enteractAwake);
                 break;
             case ENTERACT_TYPE.TLK:

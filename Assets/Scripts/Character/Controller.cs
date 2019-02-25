@@ -46,7 +46,12 @@ public class Controller : MonoBehaviour
         if ((Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.E)) && !enteractLock)
         {
             EnteractLock();
-            GlobalHub.Instance.p_enteract.ActDo();
+            var enteract = GlobalHub.Instance.p_enteract;
+            if (enteract != null) { enteract.ActDo(); }
+            else
+            {
+                EventManager.Instance.PostNotification(EVENT_TYPE.ENTERACT_AUDIO, this, "None");
+            }
         }
     }
 

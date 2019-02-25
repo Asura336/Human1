@@ -48,11 +48,13 @@ public class InteractObject : MonoBehaviour, IEnteract, IEventListener
         if (doR == 0)
         {
             // 成功提示音效
+            EventManager.Instance.PostNotification(EVENT_TYPE.ENTERACT_AUDIO, this, "Succeed");
             Debug.Log(Url + " Complete");
         }
         else
         {
             // 失败提示音效
+            EventManager.Instance.PostNotification(EVENT_TYPE.ENTERACT_AUDIO, this, "Fail");
             Debug.Log(Url + " Fail");
         }
         return 0;
@@ -99,7 +101,8 @@ public class InteractObject : MonoBehaviour, IEnteract, IEventListener
                 {
                     Url = url,
                     Point = point,
-                    wrap = this
+                    wrap = this,
+                    p_colorGradient = GetComponent<ColorGradient>()
                 };
                 break;
             case ENTERACT_TYPE.TLK:
