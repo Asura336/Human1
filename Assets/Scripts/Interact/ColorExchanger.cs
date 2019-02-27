@@ -46,13 +46,19 @@ public class ColorExchanger: IEnteract
 
     public int ActDo()
     {
-        COLOR_TYPE tmp = GlobalHub.Instance.PlayerColorType;
+        var gi = GlobalHub.Instance;
+        var ei = EventManager.Instance;
+
+        COLOR_TYPE tmp = gi.PlayerColorType;
         if (Point.Equals(tmp)) { return 1; }
-        GlobalHub.Instance.PlayerColorType = (COLOR_TYPE)Point;
+        gi.PlayerColorType = (COLOR_TYPE)Point;
         Point = (int)tmp;
 
-        EventManager.Instance.PostNotification(EVENT_TYPE.COLOR_ACT, parent, Point);
-        GlobalHub.Instance.Url2Point[Url] = Point;
+        gi.Url2Point[Url] = Point;
+        ei.PostNotification(EVENT_TYPE.COLOR_ACT, parent, Point);
+
+        ActClose();
+        ei.PostNotification(EVENT_TYPE.ENTERACT_UI, wrap, EnteractType);
         return 0;
     }
 }

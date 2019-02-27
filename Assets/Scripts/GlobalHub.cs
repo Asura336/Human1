@@ -122,7 +122,8 @@ public class GlobalHub
         PlayerScene = initPlayerScene;
         Url2Point = new Dictionary<string, int>()
         {
-            {"Player", (int)COLOR_TYPE.NULL}
+            {"Player", (int)COLOR_TYPE.NULL},
+            {"BKeyFlag", 0}
         };
     }
 

@@ -61,8 +61,7 @@ public sealed class PlayerAct : BaseAct
         base.Update();
         if (selfTransform.position.y < -100)
         {
-            LevelManager.Instance.ChangeScene(GlobalHub.initPlayerScene, 
-                GlobalHub.initPlayerPos, GlobalHub.initPlayerForward);
+            EventManager.Instance.PostNotification(EVENT_TYPE.FALL_OUT_RANGE, this);
         }
     }
 

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,7 +9,7 @@ using UnityEngine.SceneManagement;
 /// 游戏进行中作为全局单例，整个游戏应只初始化一次；
 /// 管理场景转换；
 /// </summary>
-public class LevelManager : MonoBehaviour
+public class LevelManager : MonoBehaviour, IEventListener
 {
     private static LevelManager instance = null;
     public static LevelManager Instance
@@ -43,6 +44,9 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        EventManager.Instance.AddListener(EVENT_TYPE.FALL_OUT_RANGE, this);
+        EventManager.Instance.AddListener(EVENT_TYPE.GET_KEY, this);
+
         SceneManager.sceneLoaded += OnSceneLoaded;
 
         p_player = GetComponentInChildren<PlayerAct>();
@@ -88,6 +92,13 @@ public class LevelManager : MonoBehaviour
         _cachePlayerPos = PlayerTrans.position;
     }
 
+    readonly WaitForSeconds changeSceneWait = new WaitForSeconds(1);
+    IEnumerator _ChangeScene(string sceneName)
+    {
+        yield return changeSceneWait;
+        ChangeScene(sceneName);
+    }
+
     /// <summary>
     /// 转换到下一个场景
     /// </summary>
@@ -122,4 +133,29 @@ public class LevelManager : MonoBehaviour
     }
 
     #endregion
+
+    public void OnEvent(EVENT_TYPE eventType, Component sender, object param = null)
+    {
+        switch (eventType)
+        {
+            case EVENT_TYPE.GET_KEY:
+                GlobalHub.Instance.Url2Point["BKeyFlag"] |= 1 << (int)param;
+                switch ((COLOR_TYPE)param)
+                {
+                    case COLOR_TYPE.RED:  // red
+                        StartCoroutine(_ChangeScene("Level_white_0"));
+                        break;
+                    default:
+                        Debug.LogError("Key's value out of range.", this);
+                        return;
+                }
+                break;
+            case EVENT_TYPE.FALL_OUT_RANGE:
+                ChangeScene(GlobalHub.initPlayerScene,
+                            GlobalHub.initPlayerPos, 
+                            GlobalHub.initPlayerForward);
+                break;
+            default: return;
+        }
+    }
 }

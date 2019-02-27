@@ -44,13 +44,18 @@ public class ColorSpring : IEnteract
 
     public int ActDo()
     {
-        var gl = GlobalHub.Instance;
-        if (gl.PlayerColorType == COLOR_TYPE.NULL && _colorType != COLOR_TYPE.NULL)
+        var gi = GlobalHub.Instance;
+        var ei = EventManager.Instance;
+        if (gi.PlayerColorType == COLOR_TYPE.NULL && _colorType != COLOR_TYPE.NULL)
         {
-            gl.PlayerColorType = (COLOR_TYPE)Point;
+            ei.PostNotification(EVENT_TYPE.GET_KEY, wrap, Point);
+            gi.PlayerColorType = (COLOR_TYPE)Point;
             _colorType = COLOR_TYPE.NULL;
-            EventManager.Instance.PostNotification(EVENT_TYPE.COLOR_GRADIENT, wrap, Url);
-            GlobalHub.Instance.Url2Point[Url] = Point;
+            ei.PostNotification(EVENT_TYPE.COLOR_GRADIENT, wrap, Url);
+            gi.Url2Point[Url] = Point;
+
+            ActClose();
+            ei.PostNotification(EVENT_TYPE.ENTERACT_UI, wrap, EnteractType);
             return 0;  // 成功互动
         }
         return 1; // 失败互动
