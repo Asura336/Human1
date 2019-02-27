@@ -62,10 +62,15 @@
     - 增加颜色渐变组件 ColorGradient，可令带有材质或灯光的物体的颜色渐变至目标色。
     - ColorSpring 组件由事件驱动，仅提供一次某种颜色。触发动作作为游戏进度中的里程碑。 
     - 与物体互动的音效使用事件驱动，param：成功 = "Succeed"，失败 = "Fail"，无在活动的互动物体 = "None"。播放音效的组件未添加。
+- <date = Feb25>
+    - 与 ColorSpring 组件互动后发送互动消息。需要确保每个 ColorSpring 的 Point 属性值唯一。
+    - 存档文件相关：GlobalHub.Instance.Url2Point["BKeyFlag"]。按位存放对应 Point 值的 ColorSpring 已触摸的消息。
+    - 触摸红色的 ColorSpring 后的转场效果为 trick，需要保证场景 Level_white_0 与 Level_white_1 中的塔顶建筑世界坐标与旋转角一致。
 
 ## TODO
 
-- 建立实验性场景。<接近完成，date = Jan10>
+- 建立实验性场景。<接近完成，date = Jan10> <至“找到红色关卡”前，date = Feb27>
     - 单元进度：关卡 无色 -> 红色 待补完。
 - 增加序列化/反序列化组件。优先级为：文本组件 >= 带颜色的物件 url 对应颜色枚举 >> 存盘功能
+- 预备增加的初始反序列化信息：对唯一 Url 物体在文本中指定预置 Point 属性
 - 细化 NPC 控制器的内容
