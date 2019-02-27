@@ -33,11 +33,9 @@ public class TransPos : MonoBehaviour
         var dv = other.transform.position - selfTransform.position;
         if (other.CompareTag("Player"))
         {
-            Debug.Log(other.transform.rotation);
             other.transform.position = trans_exit.position + dv;
             //other.transform.rotation = trans_exit.rotation;
             simpleCamera.SetPosForce();
         }
-        Debug.Log(other.transform.rotation.ToString() + trans_exit.rotation.ToString());
     }
 }
