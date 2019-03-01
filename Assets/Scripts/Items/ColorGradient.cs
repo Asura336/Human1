@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 如果 <see cref="masterUrl"/> 对应的 <see cref="ColorSpring"/> 组件值改动，将使颜色渐变
+/// </summary>
 public class ColorGradient : MonoBehaviour, IEventListener
 {
     public string masterUrl;
@@ -13,11 +16,12 @@ public class ColorGradient : MonoBehaviour, IEventListener
 
     private void Start()
     {
+        var u2p = GlobalHub.Instance.Url2Point;
         m_renderer = GetComponent<Renderer>();
         if (m_renderer != null) { m_material = m_renderer.material; }
         m_light = GetComponent<Light>();
         EventManager.Instance.AddListener(EVENT_TYPE.COLOR_GRADIENT, this);
-        if (GlobalHub.Instance.Url2Point.ContainsKey(masterUrl))
+        if (u2p.ContainsKey(masterUrl))
         {
             Gradient();
         }

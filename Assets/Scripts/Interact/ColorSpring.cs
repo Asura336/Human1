@@ -19,7 +19,9 @@ public class ColorSpring : IEnteract
         set
         {
             _colorType = (COLOR_TYPE)value;
-            selfmaterial.color = GlobalHub.Instance.colorTypes[(COLOR_TYPE)value];
+            Color newColor = GlobalHub.Instance.colorTypes[(COLOR_TYPE)value];
+            newColor.a = selfmaterial.color.a;
+            selfmaterial.color = newColor;
         }
     }
 

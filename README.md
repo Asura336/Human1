@@ -30,6 +30,17 @@
     - 11：NoShadow，没有影子的墙壁
     - 12：VcRaycastField，带有 VisibilityChanger 组件的物体所在层
 
+- 场景组件规则：
+
+    - 场景根节点
+       - 阳光等点光源
+       - Enviroment
+           - Static：光照贴图静态物体
+           - Items：可活动或可交互的物体、非静态光照和模型
+           - 其它组件：其它功能性组件
+       - LevelGates：切换场景的触发器和进入场景的锚点
+       - 其它组件：调试用临时组件
+
 
 
 ## 完成功能的组件
@@ -62,10 +73,13 @@
     - 增加颜色渐变组件 ColorGradient，可令带有材质或灯光的物体的颜色渐变至目标色。
     - ColorSpring 组件由事件驱动，仅提供一次某种颜色。触发动作作为游戏进度中的里程碑。 
     - 与物体互动的音效使用事件驱动，param：成功 = "Succeed"，失败 = "Fail"，无在活动的互动物体 = "None"。播放音效的组件未添加。
-- <date = Feb25>
+- <date = Feb27>
     - 与 ColorSpring 组件互动后发送互动消息。需要确保每个 ColorSpring 的 Point 属性值唯一。
     - 存档文件相关：GlobalHub.Instance.Url2Point["BKeyFlag"]。按位存放对应 Point 值的 ColorSpring 已触摸的消息。
     - 触摸红色的 ColorSpring 后的转场效果为 trick，需要保证场景 Level_white_0 与 Level_white_1 中的塔顶建筑世界坐标与旋转角一致。
+- <date = Mar1>
+    - 增加检查游戏事件开关通过后消去场景内某些组件的脚本 DisItemWithGFlag。
+    - 迷宫内提示路径的组件进一步完善，等待加入音效。
 
 ## TODO
 

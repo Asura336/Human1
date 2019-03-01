@@ -19,9 +19,9 @@ public class ColorExchanger: IEnteract
         set
         {
             _colorType = (COLOR_TYPE)value;
-            //selfRenderer.material.color = 
-            selfmaterial.color =
-                GlobalHub.Instance.colorTypes[(COLOR_TYPE)value];
+            Color newColor = GlobalHub.Instance.colorTypes[(COLOR_TYPE)value];
+            newColor.a = selfmaterial.color.a;
+            selfmaterial.color = newColor;
         }
     }
 

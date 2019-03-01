@@ -70,6 +70,7 @@ public class LevelManager : MonoBehaviour, IEventListener
         Debug.Log(string.Format("OnSceneLoaded: {0}; mode: {1}", scene.name, mode));
 #endif
         EventManager.Instance.RemoveRedundancies();
+        EventManager.Instance.PostNotification(EVENT_TYPE.ENTERACT_UI, this, ENTERACT_TYPE.NULL);
         p_player.useGravity = true;
         PlayerTrans.position = _cachePlayerPos;
 
@@ -139,11 +140,15 @@ public class LevelManager : MonoBehaviour, IEventListener
         switch (eventType)
         {
             case EVENT_TYPE.GET_KEY:
-                GlobalHub.Instance.Url2Point["BKeyFlag"] |= 1 << (int)param;
+                GlobalHub.Instance.GlobalKeyFlag |= 1 << (int)param;
                 switch ((COLOR_TYPE)param)
                 {
                     case COLOR_TYPE.RED:  // red
                         StartCoroutine(_ChangeScene("Level_white_0"));
+                        break;
+                    case COLOR_TYPE.YELLOW:
+                        break;
+                    case COLOR_TYPE.GREEN:
                         break;
                     default:
                         Debug.LogError("Key's value out of range.", this);

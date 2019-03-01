@@ -57,6 +57,16 @@ public class GlobalHub
         }
     }
 
+    public int GlobalKeyFlag
+    {
+        get { return Url2Point["BKeyFlag"]; }
+        set
+        {
+            if (Url2Point.ContainsKey("BKeyFlag"))
+            { Url2Point["BKeyFlag"] = value; }
+        }
+    }
+
     /// <summary>
     /// 颜色枚举量与颜色的映射关系
     /// </summary>
@@ -106,7 +116,7 @@ public class GlobalHub
 
         // TODO:
         // 从序列化文件建立玩家信息和有唯一标识的物件 Point 预设值
-        CreateInitSaveFile();
+        CreateInitSaveFile();  // 调试用，建立存档系统后此函数与类似函数应在外部调用
     }
 
     public void OnGameSave()
@@ -141,8 +151,8 @@ public enum COLOR_TYPE
     NULL,
     RED,
     YELLOW,
-    BLUE,
-    GREEN
+    GREEN,
+    BLUE
 }
 
 [Serializable]

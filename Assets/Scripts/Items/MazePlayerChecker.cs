@@ -11,6 +11,8 @@ public class MazePlayerChecker : MonoBehaviour
     DMaze dMaze;
     Transform selfTransform;
 
+    public Transform pointOut;
+
     private void Start()
     {
         selfTransform = transform;
@@ -21,6 +23,13 @@ public class MazePlayerChecker : MonoBehaviour
         StartCoroutine(CheckPosition(li.PlayerTrans));  // 检查玩家的位置
     }
 
+    void PointOut(Vector3 original, Vector3 dir)
+    {
+        // 传入玩家位置和位置增量
+        pointOut.position = original + dir;
+        // 声音提示加在这里
+    }
+
     /*
      * 每隔指定时间间隔检查玩家的位置，提示迷宫路径。
      * TODO: 提示方式待改为使用声音
@@ -29,7 +38,8 @@ public class MazePlayerChecker : MonoBehaviour
     readonly float cellHeight = Maze.cellHeight;
     readonly float cellWidth = Maze.cellWidth;
     readonly WaitForSeconds checkWait = new WaitForSeconds(0.75f);
-    readonly string[] dirs = new string[] { "up", "right", "down", "left", "dead way" };
+    readonly Vector3[] m_dirs =
+        new Vector3[] { Vector3.left, Vector3.forward, Vector3.right, Vector3.back, Vector3.up, };
     IEnumerator CheckPosition(Transform player)
     {
         Vector3 selfPos = selfTransform.position;
@@ -80,7 +90,7 @@ public class MazePlayerChecker : MonoBehaviour
                     minDis = DistGraph[toPoint(x, y - 1)];
                     minDisDir = 3;
                 }
-                Debug.Log(dirs[minDisDir] + " " + DistGraph[toPoint(x, y)]);
+                PointOut(player.position, m_dirs[minDisDir] * 4);
             }
             yield return checkWait;
         }
