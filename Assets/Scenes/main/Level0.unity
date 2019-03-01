@@ -427,7 +427,7 @@ PrefabInstance:
     - target: {fileID: 4315225967585765873, guid: 63e5c5a105f6c8b4a80a4d3615169a08,
         type: 3}
       propertyPath: answer
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63e5c5a105f6c8b4a80a4d3615169a08, type: 3}
@@ -2521,7 +2521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   setType: 1
-  point: 3
+  point: 4
   url: Level0_cT_blue0
 --- !u!1 &4061251464949326006
 GameObject:
