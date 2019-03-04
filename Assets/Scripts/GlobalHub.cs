@@ -75,8 +75,8 @@ public class GlobalHub
         {COLOR_TYPE.NULL, Color.white},
         {COLOR_TYPE.RED, Color.red},
         {COLOR_TYPE.YELLOW, Color.yellow},
-        {COLOR_TYPE.BLUE, Color.blue},
-        {COLOR_TYPE.GREEN, Color.green}
+        {COLOR_TYPE.GREEN, Color.green},
+        {COLOR_TYPE.BLUE, Color.blue}
     };
 
     public static readonly Vector3 initPlayerPos = new Vector3(1.5f, 0, -2.5f);

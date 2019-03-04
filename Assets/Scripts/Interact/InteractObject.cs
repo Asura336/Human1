@@ -35,11 +35,29 @@ public class InteractObject : MonoBehaviour, IEnteract, IEventListener
     public void ActAwake()
     {
         enteract.ActAwake();
+        if (selfRenderer.materials.Length < 2)
+        {
+            selfRenderer.materials = new Material[2] {
+                selfRenderer.material, new Material(Shader.Find("Outlined/Silhouette Only"))
+            };
+            selfRenderer.materials[1].SetColor("_OutlineColor", Color.white);
+        }
+        var outline = selfRenderer.materials[1];
+        outline.SetFloat("_Outline", 0.1f * Mathf.Min(1, selfTransform.localScale.x,
+                selfTransform.localScale.y, selfTransform.localScale.z));
     }
 
     public void ActClose()
     {
         enteract.ActClose();
+        if (selfRenderer.materials.Length < 2)
+        {
+            selfRenderer.materials = new Material[2] {
+                selfRenderer.material, new Material(Shader.Find("Outlined/Silhouette Only"))
+            };
+        }
+        var outline = selfRenderer.materials[1];
+        outline.SetFloat("_Outline", 0);
     }
 
     public int ActDo()
@@ -70,6 +88,9 @@ public class InteractObject : MonoBehaviour, IEnteract, IEventListener
     [Header("设置物件的唯一标识")]
     public string url;
 
+    Renderer selfRenderer;
+    Transform selfTransform;
+
     private void Awake()
     {
         EventManager.Instance.AddListener(EVENT_TYPE.NODE_CALL, this);
@@ -77,7 +98,8 @@ public class InteractObject : MonoBehaviour, IEnteract, IEventListener
 
     void Start()
     {
-        Renderer selfRenderer = GetComponent<Renderer>();
+        selfTransform = transform;
+        selfRenderer = GetComponent<Renderer>();
 
         var u2p = GlobalHub.Instance.Url2Point;
         if (u2p.ContainsKey(url))
