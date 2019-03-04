@@ -429,6 +429,11 @@ PrefabInstance:
       propertyPath: answer
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4315225968430545798, guid: 63e5c5a105f6c8b4a80a4d3615169a08,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63e5c5a105f6c8b4a80a4d3615169a08, type: 3}
 --- !u!4 &387367992 stripped
@@ -1199,6 +1204,11 @@ PrefabInstance:
         type: 3}
       propertyPath: answer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4315225968430545798, guid: 63e5c5a105f6c8b4a80a4d3615169a08,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63e5c5a105f6c8b4a80a4d3615169a08, type: 3}
