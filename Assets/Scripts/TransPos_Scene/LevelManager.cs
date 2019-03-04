@@ -93,7 +93,7 @@ public class LevelManager : MonoBehaviour, IEventListener
         _cachePlayerPos = PlayerTrans.position;
     }
 
-    readonly WaitForSeconds changeSceneWait = new WaitForSeconds(1);
+    readonly WaitForSeconds changeSceneWait = new WaitForSeconds(1.25f);
     IEnumerator _ChangeScene(string sceneName)
     {
         yield return changeSceneWait;
