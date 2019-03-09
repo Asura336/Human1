@@ -688,6 +688,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 8dda02417d89e914bbcd33842f70b72b, type: 3}
+      propertyPath: m_StitchLightmapSeams
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8dda02417d89e914bbcd33842f70b72b, type: 3}
 --- !u!4 &1064940151 stripped
@@ -1369,6 +1373,16 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 17
       objectReference: {fileID: 0}
+    - target: {fileID: 5369878874586235956, guid: 6851289be3370e64cbf6b99b1bc1a869,
+        type: 3}
+      propertyPath: m_StitchLightmapSeams
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369878874586235956, guid: 6851289be3370e64cbf6b99b1bc1a869,
+        type: 3}
+      propertyPath: m_ImportantGI
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6851289be3370e64cbf6b99b1bc1a869, type: 3}
 --- !u!4 &1832944169 stripped
@@ -1637,6 +1651,11 @@ PrefabInstance:
       propertyPath: m_CustomBakedTexture
       value: 
       objectReference: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 1174524496928154406, guid: 77eeb635fc83582448d6c819988ec7e8,
+        type: 3}
+      propertyPath: m_StitchLightmapSeams
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77eeb635fc83582448d6c819988ec7e8, type: 3}
 --- !u!4 &1897992173 stripped
@@ -1809,6 +1828,16 @@ PrefabInstance:
       propertyPath: m_BoxSize.z
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 1174524496928154406, guid: 77eeb635fc83582448d6c819988ec7e8,
+        type: 3}
+      propertyPath: m_StitchLightmapSeams
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257754698278483196, guid: 77eeb635fc83582448d6c819988ec7e8,
+        type: 3}
+      propertyPath: m_StitchLightmapSeams
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77eeb635fc83582448d6c819988ec7e8, type: 3}
 --- !u!1001 &3508747089832584595
@@ -1898,6 +1927,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 17
       objectReference: {fileID: 0}
+    - target: {fileID: 3508747089207172278, guid: af5d57839383bf34e8703e03c9ecbdce,
+        type: 3}
+      propertyPath: m_StitchLightmapSeams
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af5d57839383bf34e8703e03c9ecbdce, type: 3}
 --- !u!1001 &8926068018780458896
@@ -1911,6 +1945,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Sunshine_mix
+      objectReference: {fileID: 0}
+    - target: {fileID: 8926068019354685643, guid: 9d8e80946a7b18f4c86113c8120bd1d9,
+        type: 3}
+      propertyPath: m_BounceIntensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8926068019354685643, guid: 9d8e80946a7b18f4c86113c8120bd1d9,
+        type: 3}
+      propertyPath: m_ShadowAngle
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8926068019354685643, guid: 9d8e80946a7b18f4c86113c8120bd1d9,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8926068019354685643, guid: 9d8e80946a7b18f4c86113c8120bd1d9,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8926068019354685644, guid: 9d8e80946a7b18f4c86113c8120bd1d9,
         type: 3}
@@ -1966,26 +2020,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8926068019354685643, guid: 9d8e80946a7b18f4c86113c8120bd1d9,
-        type: 3}
-      propertyPath: m_BounceIntensity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8926068019354685643, guid: 9d8e80946a7b18f4c86113c8120bd1d9,
-        type: 3}
-      propertyPath: m_ShadowAngle
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8926068019354685643, guid: 9d8e80946a7b18f4c86113c8120bd1d9,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8926068019354685643, guid: 9d8e80946a7b18f4c86113c8120bd1d9,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d8e80946a7b18f4c86113c8120bd1d9, type: 3}
