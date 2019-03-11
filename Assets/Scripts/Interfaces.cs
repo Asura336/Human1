@@ -52,7 +52,7 @@ public enum ENTERACT_TYPE
 /// <summary>
 /// 互动音效的枚举
 /// </summary>
-public enum ENTERACT_CLIP
+public enum SOUND
 {
     ENTERACT_NULL,
     ENTERACT_SUCCEED,

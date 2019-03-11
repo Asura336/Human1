@@ -80,7 +80,7 @@ public class GlobalHub
     };
 
     /// <summary>
-    /// 保存声音文件的容器，成员下标与 <see cref="ENTERACT_CLIP"/> 枚举对应
+    /// 保存声音文件的容器，成员下标与 <see cref="SOUND"/> 枚举对应
     /// 初始化在 <see cref="GameInit"/>
     /// </summary>
     public AudioClip[] Sounds { get; private set; }

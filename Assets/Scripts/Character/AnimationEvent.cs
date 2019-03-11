@@ -10,6 +10,6 @@ public class AnimationEvent : MonoBehaviour
     void OnStep()
     {
         var ei = EventManager.Instance;
-        ei.PostNotification(EVENT_TYPE.ENTERACT_AUDIO, this, ENTERACT_CLIP.STEP);
+        ei.PostNotification(EVENT_TYPE.ENTERACT_AUDIO, this, SOUND.STEP);
     }
 }
