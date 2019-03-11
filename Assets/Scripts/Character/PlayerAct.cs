@@ -6,7 +6,7 @@ using UnityEngine;
 /// 玩家角色表示
 /// </summary>
 [RequireComponent(typeof(Animator), typeof(CharacterController))]
-public sealed class PlayerAct : BaseAct
+public sealed class PlayerAct : BaseAct, IEventListener
 {
     static readonly int m_LeftFootWeight = Animator.StringToHash("LeftFootWeight");
     static readonly int m_RightFootWeight = Animator.StringToHash("RightFootWeight");
@@ -42,11 +42,16 @@ public sealed class PlayerAct : BaseAct
     #endregion
 
     Transform selfTransform;
+    AudioSource selfAudioSource;
+
+    private void Awake()
+    {
+        selfTransform = transform;
+    }
 
     protected override void Start()
     {
         base.Start();
-        selfTransform = transform;
         defaultCenter = cc.center;
         footOffset = Vector3.up * offset;
 
@@ -54,6 +59,9 @@ public sealed class PlayerAct : BaseAct
         Renderer m_renderer = GetComponentInChildren<Renderer>();
         gi.p_playerMaterial = m_renderer.material;
         gi.PlayerColorType = (COLOR_TYPE)gi.Url2Point["Player"];
+
+        selfAudioSource = GetComponent<AudioSource>();
+        EventManager.Instance.AddListener(EVENT_TYPE.ENTERACT_AUDIO, this);
     }
 
     protected override void Update()
@@ -62,6 +70,15 @@ public sealed class PlayerAct : BaseAct
         if (selfTransform.position.y < -100)
         {
             EventManager.Instance.PostNotification(EVENT_TYPE.FALL_OUT_RANGE, this);
+        }
+    }
+
+    public void OnEvent(EVENT_TYPE eventType, Component sender, object param = null)
+    {
+        var clips = GlobalHub.Instance.Sounds;
+        if (eventType == EVENT_TYPE.ENTERACT_AUDIO)
+        {
+            selfAudioSource.PlayOneShot(clips[(int)param]);
         }
     }
 

@@ -50,6 +50,17 @@ public enum ENTERACT_TYPE
 }
 
 /// <summary>
+/// 互动音效的枚举
+/// </summary>
+public enum ENTERACT_CLIP
+{
+    ENTERACT_NULL,
+    ENTERACT_SUCCEED,
+    ENTERACT_FAIL,
+    STEP
+}
+
+/// <summary>
 /// UI 节点侦听器
 /// </summary>
 public interface IEventListener

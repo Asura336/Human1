@@ -83,9 +83,13 @@ public class SimpleCameraFreeLook : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Awake()
     {
         selfTransform = transform;
+    }
+
+    void Start()
+    {
         cameraNode = GetComponentInChildren<Camera>();
         cameraTrans = cameraNode.transform;
 

@@ -37,7 +37,7 @@ public class Controller : MonoBehaviour
         if (!isControlable) { return; }
 
         player.IsMove = h != 0 || v != 0;
-        player.MoveOrder = Mathf.Max(0.5f, r);
+        player.MoveOrder = Mathf.Max(0, r);
 
         Vector3 newForward = p_cameraTrans.forward * v + p_cameraTrans.right * h;
         newForward.y = 0;
@@ -50,7 +50,8 @@ public class Controller : MonoBehaviour
             if (enteract != null) { enteract.ActDo(); }
             else
             {
-                EventManager.Instance.PostNotification(EVENT_TYPE.ENTERACT_AUDIO, this, "None");
+                EventManager.Instance.PostNotification(
+                    EVENT_TYPE.ENTERACT_AUDIO, this, ENTERACT_CLIP.ENTERACT_NULL);
             }
             Debug.Log(enteract);
         }

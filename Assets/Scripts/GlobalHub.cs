@@ -79,6 +79,12 @@ public class GlobalHub
         {COLOR_TYPE.BLUE, Color.blue}
     };
 
+    /// <summary>
+    /// 保存声音文件的容器，成员下标与 <see cref="ENTERACT_CLIP"/> 枚举对应
+    /// 初始化在 <see cref="GameInit"/>
+    /// </summary>
+    public AudioClip[] Sounds { get; private set; }
+
     public static readonly Vector3 initPlayerPos = new Vector3(1.5f, 0, -2.5f);
     public static readonly Vector3 initPlayerForward = new Vector3(0, 0, 1);
     public const string initPlayerScene = "Level0";
@@ -109,6 +115,13 @@ public class GlobalHub
         TalkNode[] nodeArray = JsonTool.ToJsonArray<TalkNode>(nodeText);
         point2TalkNode = new Dictionary<int, TalkNode>();
         foreach (var node in nodeArray) { point2TalkNode[node.id] = node; }
+        Sounds = new AudioClip[]    
+        {
+            Resources.Load<AudioClip>("Sound/EnteractNull"),  // 0
+            Resources.Load<AudioClip>("Sound/EnteractSuccess"),  // 1
+            Resources.Load<AudioClip>("Sound/EnteractFail"),  // 2
+            Resources.Load<AudioClip>("Sound/Step")  // 3
+        };
 
         // 固定随机数种子
         var r = new System.Random();

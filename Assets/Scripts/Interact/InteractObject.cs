@@ -66,13 +66,15 @@ public class InteractObject : MonoBehaviour, IEnteract, IEventListener
         if (doR == 0)
         {
             // 成功提示音效
-            EventManager.Instance.PostNotification(EVENT_TYPE.ENTERACT_AUDIO, this, "Succeed");
+            EventManager.Instance.PostNotification(
+                EVENT_TYPE.ENTERACT_AUDIO, this, ENTERACT_CLIP.ENTERACT_SUCCEED);
             Debug.Log(Url + " Complete");
         }
         else
         {
             // 失败提示音效
-            EventManager.Instance.PostNotification(EVENT_TYPE.ENTERACT_AUDIO, this, "Fail");
+            EventManager.Instance.PostNotification(
+                EVENT_TYPE.ENTERACT_AUDIO, this, ENTERACT_CLIP.ENTERACT_FAIL);
             Debug.Log(Url + " Fail");
         }
         return 0;
