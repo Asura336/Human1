@@ -47,8 +47,7 @@ public class EventManager
     /// <param name="param">可选参数</param>
     public void PostNotification(EVENT_TYPE eventType, Component sender, object param = null)
     {
-        List<IEventListener> listenerList = null;
-        if (!listeners.TryGetValue(eventType, out listenerList)) { return; }
+        if (!listeners.TryGetValue(eventType, out List<IEventListener> listenerList)) { return; }
         foreach (var listener in listenerList)
         {
             if (listener != null) { listener.OnEvent(eventType, sender, param); }
