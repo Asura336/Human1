@@ -7,9 +7,9 @@ using UnityEngine;
 /// </summary>
 public class AnimationEvent : MonoBehaviour
 {
-    void OnStep()
+    void OnLand()
     {
         var ei = EventManager.Instance;
-        ei.PostNotification(EVENT_TYPE.ENTERACT_AUDIO, this, SOUND.STEP);
+        ei.PostNotification(EVENT_TYPE.ENTERACT_AUDIO, this, SOUND.LAND);
     }
 }

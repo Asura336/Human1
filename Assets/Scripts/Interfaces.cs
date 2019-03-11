@@ -57,7 +57,7 @@ public enum SOUND
     ENTERACT_NULL,
     ENTERACT_SUCCEED,
     ENTERACT_FAIL,
-    STEP
+    LAND
 }
 
 /// <summary>

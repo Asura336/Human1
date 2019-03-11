@@ -120,7 +120,7 @@ public class GlobalHub
             Resources.Load<AudioClip>("Sound/EnteractNull"),  // 0
             Resources.Load<AudioClip>("Sound/EnteractSuccess"),  // 1
             Resources.Load<AudioClip>("Sound/EnteractFail"),  // 2
-            Resources.Load<AudioClip>("Sound/Step")  // 3
+            Resources.Load<AudioClip>("Sound/Land")  // 3
         };
 
         // 固定随机数种子
