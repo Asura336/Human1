@@ -42,7 +42,7 @@ public sealed class PlayerAct : BaseAct, IEventListener
     #endregion
 
     Transform selfTransform;
-    AudioSource selfAudioSource;
+    AudioSource selfAudioSource2D;
 
     private void Awake()
     {
@@ -60,7 +60,7 @@ public sealed class PlayerAct : BaseAct, IEventListener
         gi.p_playerMaterial = m_renderer.material;
         gi.PlayerColorType = (COLOR_TYPE)gi.Url2Point["Player"];
 
-        selfAudioSource = GetComponent<AudioSource>();
+        selfAudioSource2D = GetComponent<AudioSource>();
         EventManager.Instance.AddListener(EVENT_TYPE.ENTERACT_AUDIO, this);
     }
 
@@ -78,7 +78,7 @@ public sealed class PlayerAct : BaseAct, IEventListener
         var clips = GlobalHub.Instance.SoundClips;
         if (eventType == EVENT_TYPE.ENTERACT_AUDIO)
         {
-            selfAudioSource.PlayOneShot(clips[(int)param]);
+            selfAudioSource2D.PlayOneShot(clips[(int)param]);
         }
     }
 
