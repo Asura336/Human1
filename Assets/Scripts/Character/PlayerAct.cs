@@ -75,7 +75,7 @@ public sealed class PlayerAct : BaseAct, IEventListener
 
     public void OnEvent(EVENT_TYPE eventType, Component sender, object param = null)
     {
-        var clips = GlobalHub.Instance.Sounds;
+        var clips = GlobalHub.Instance.SoundClips;
         if (eventType == EVENT_TYPE.ENTERACT_AUDIO)
         {
             selfAudioSource.PlayOneShot(clips[(int)param]);
