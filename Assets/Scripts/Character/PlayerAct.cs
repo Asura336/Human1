@@ -61,7 +61,7 @@ public sealed class PlayerAct : BaseAct, IEventListener
         gi.PlayerColorType = (COLOR_TYPE)gi.Url2Point["Player"];
 
         selfAudioSource2D = GetComponent<AudioSource>();
-        EventManager.Instance.AddListener(EVENT_TYPE.ENTERACT_AUDIO, this);
+        EventManager.Instance.AddListener(EVENT_TYPE.AUDIO, this);
     }
 
     protected override void Update()
@@ -76,10 +76,20 @@ public sealed class PlayerAct : BaseAct, IEventListener
     public void OnEvent(EVENT_TYPE eventType, Component sender, object param = null)
     {
         var clips = GlobalHub.Instance.SoundClips;
-        if (eventType == EVENT_TYPE.ENTERACT_AUDIO)
+        bool is2dClip = param.Equals(SOUND.ENTERACT_NULL) ||
+            param.Equals(SOUND.ENTERACT_SUCCEED) ||
+            param.Equals(SOUND.ENTERACT_FAIL) ||
+            param.Equals(SOUND.LAND);
+        if (eventType == EVENT_TYPE.AUDIO && is2dClip)
         {
             selfAudioSource2D.PlayOneShot(clips[(int)param]);
         }
+    }
+
+    void AnimeEventOnLand()
+    {
+        var ei = EventManager.Instance;
+        ei.PostNotification(EVENT_TYPE.AUDIO, this, SOUND.LAND);
     }
 
     protected override void OnAnimatorIK()

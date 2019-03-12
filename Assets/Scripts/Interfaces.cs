@@ -58,7 +58,8 @@ public enum SOUND
     ENTERACT_SUCCEED,
     ENTERACT_FAIL,
     LAND,
-    STEP_BUTTON
+    STEP_BUTTON,
+    POINT_OUT
 }
 
 /// <summary>

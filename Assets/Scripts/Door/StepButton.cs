@@ -45,6 +45,7 @@ public class StepButton : MonoBehaviour, IPhysicsInteract, IEventListener
         }
 
         selfAudioSource = GetComponent<AudioSource>();
+        EventManager.Instance.AddListener(EVENT_TYPE.AUDIO, this);
     }
 
     public void StateChange()
@@ -64,7 +65,9 @@ public class StepButton : MonoBehaviour, IPhysicsInteract, IEventListener
     public void OnEvent(EVENT_TYPE eventType, Component sender, object param = null)
     {
         var clips = GlobalHub.Instance.SoundClips;
-        if (eventType == EVENT_TYPE.ENTERACT_AUDIO && param.Equals(SOUND.STEP_BUTTON))
+        if (eventType == EVENT_TYPE.AUDIO &&
+            ReferenceEquals(sender, this) &&  // 只响应来自自身的消息
+            param.Equals(SOUND.STEP_BUTTON))  // 限定踩踏板音效
         {
             selfAudioSource.PlayOneShot(clips[(int)param]);
         }
@@ -76,7 +79,7 @@ public class StepButton : MonoBehaviour, IPhysicsInteract, IEventListener
     {
         // 增加消息发送
         var ei = EventManager.Instance;
-        ei.PostNotification(EVENT_TYPE.ENTERACT_AUDIO, this, SOUND.STEP_BUTTON);
+        ei.PostNotification(EVENT_TYPE.AUDIO, this, SOUND.STEP_BUTTON);
         if (i_follower != null) { i_follower.StateChange(); }
     }
 

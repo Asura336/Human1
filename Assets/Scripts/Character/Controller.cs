@@ -51,7 +51,7 @@ public class Controller : MonoBehaviour
             else
             {
                 EventManager.Instance.PostNotification(
-                    EVENT_TYPE.ENTERACT_AUDIO, this, SOUND.ENTERACT_NULL);
+                    EVENT_TYPE.AUDIO, this, SOUND.ENTERACT_NULL);
             }
             Debug.Log(enteract);
         }

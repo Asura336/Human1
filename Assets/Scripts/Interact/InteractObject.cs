@@ -67,14 +67,14 @@ public class InteractObject : MonoBehaviour, IEnteract, IEventListener
         {
             // 成功提示音效
             EventManager.Instance.PostNotification(
-                EVENT_TYPE.ENTERACT_AUDIO, this, SOUND.ENTERACT_SUCCEED);
+                EVENT_TYPE.AUDIO, this, SOUND.ENTERACT_SUCCEED);
             Debug.Log(Url + " Complete");
         }
         else
         {
             // 失败提示音效
             EventManager.Instance.PostNotification(
-                EVENT_TYPE.ENTERACT_AUDIO, this, SOUND.ENTERACT_FAIL);
+                EVENT_TYPE.AUDIO, this, SOUND.ENTERACT_FAIL);
             Debug.Log(Url + " Fail");
         }
         return 0;

@@ -11,28 +11,33 @@ public class MazePlayerChecker : MonoBehaviour
     DMaze dMaze;
     Transform selfTransform;
 
-    public Transform pointOut;
+    public SoundPoint pointOut;
 
     private void Start()
     {
         selfTransform = transform;
         maze = GetComponent<Maze>();
         dMaze = maze.dMaze;
+
+        if (pointOut == null) { pointOut = GetComponentInChildren<SoundPoint>(); }
         var li = LevelManager.Instance;
-        if (li == null) { return; }
-        StartCoroutine(CheckPosition(li.PlayerTrans));  // 检查玩家的位置
+        var gi = GlobalHub.Instance;
+        if ((gi.GlobalKeyFlag & (1 << (int)COLOR_TYPE.RED)) == 0)
+        {
+            StartCoroutine(CheckPosition(li.PlayerTrans));  // 检查玩家的位置
+        }
     }
 
     void PointOut(Vector3 original, Vector3 dir)
     {
         // 传入玩家位置和位置增量
-        pointOut.position = original + dir;
+        pointOut.Position = original + dir;
         // 声音提示加在这里
+        EventManager.Instance.PostNotification(EVENT_TYPE.AUDIO, this, SOUND.POINT_OUT);
     }
 
     /*
      * 每隔指定时间间隔检查玩家的位置，提示迷宫路径。
-     * TODO: 提示方式待改为使用声音
      */
     readonly int infinity = Maze.infinity;
     readonly float cellHeight = Maze.cellHeight;
