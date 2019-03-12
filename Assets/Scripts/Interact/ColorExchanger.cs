@@ -50,7 +50,7 @@ public class ColorExchanger: IEnteract
         var ei = EventManager.Instance;
 
         COLOR_TYPE tmp = gi.PlayerColorType;
-        if (Point.Equals(tmp)) { return 1; }
+        if ((COLOR_TYPE)Point == tmp) { return 1; }
         gi.PlayerColorType = (COLOR_TYPE)Point;
         Point = (int)tmp;
 

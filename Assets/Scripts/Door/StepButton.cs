@@ -8,7 +8,7 @@ using UnityEngine;
 /// 改变状态关联其他物体
 /// </summary>
 [RequireComponent(typeof(Animator))]
-public class StepButton : MonoBehaviour, IPhysicsInteract
+public class StepButton : MonoBehaviour, IPhysicsInteract, IEventListener
 {
     public Transform follower;  // 与踩踏板关联的物体
     IPhysicsInteract i_follower;
@@ -17,6 +17,8 @@ public class StepButton : MonoBehaviour, IPhysicsInteract
 
     static readonly int m_IsTriggered = Animator.StringToHash("IsTriggered");
     static readonly int m_ButtonDo = Animator.StringToHash("ButtonDo");
+
+    AudioSource selfAudioSource;
 
     bool isTriggered = false;
     bool IsTriggered
@@ -35,12 +37,14 @@ public class StepButton : MonoBehaviour, IPhysicsInteract
     private void Start()
     {
         selfAnimator = GetComponent<Animator>();
-
+        
         i_follower = follower.GetComponent<IPhysicsInteract>();
         if (i_follower == null)
         {
             Debug.LogAssertionFormat(this, "i_connection is null.");
         }
+
+        selfAudioSource = GetComponent<AudioSource>();
     }
 
     public void StateChange()
@@ -57,11 +61,22 @@ public class StepButton : MonoBehaviour, IPhysicsInteract
         selfAnimator.SetTrigger(m_ButtonDo); 
     }
 
+    public void OnEvent(EVENT_TYPE eventType, Component sender, object param = null)
+    {
+        var clips = GlobalHub.Instance.SoundClips;
+        if (eventType == EVENT_TYPE.ENTERACT_AUDIO && param.Equals(SOUND.STEP_BUTTON))
+        {
+            selfAudioSource.PlayOneShot(clips[(int)param]);
+        }
+    }
+
     #region 帧动画事件调用函数
 
     public void AnimeEventOnStateChange()
     {
         // 增加消息发送
+        var ei = EventManager.Instance;
+        ei.PostNotification(EVENT_TYPE.ENTERACT_AUDIO, this, SOUND.STEP_BUTTON);
         if (i_follower != null) { i_follower.StateChange(); }
     }
 
