@@ -14,6 +14,10 @@ public class CDoor : Door, IEventListener
         switch (eventType)
         {
             case EVENT_TYPE.COLOR_ACT:
+                //Debug.Log(string.Format(
+                //        $"{((IEnteract)sender).Url}[{(int)param}] -> " +
+                //        $"{enteract.Url}[{enteract.Point}], {ReferenceEquals(sender, enteract)}"
+                //        ));
                 if (ReferenceEquals(sender, enteract))
                 {
                     if (answer.Equals(param)) { OpenDoor(); }

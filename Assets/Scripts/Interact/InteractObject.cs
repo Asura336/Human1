@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -118,7 +119,8 @@ public class InteractObject : MonoBehaviour, IEnteract, IEventListener
                     wrap = this
                 };
                 // 场景唤醒时发送一条消息，如开启颜色已经正确的门
-                EventManager.Instance.PostNotification(EVENT_TYPE.COLOR_ACT, this, Point);
+                // 延迟发送，规避时序问题
+                StartCoroutine(PostColorAct());
                 break;
             case ENTERACT_TYPE.CLR_SPR:
                 enteract = new ColorSpring(this, selfRenderer.material)
@@ -140,6 +142,12 @@ public class InteractObject : MonoBehaviour, IEnteract, IEventListener
                 Debug.LogErrorFormat(this, "交互类型未指定");
                 return;
         }
+    }
+
+    IEnumerator PostColorAct()
+    {
+        yield return null;
+        EventManager.Instance.PostNotification(EVENT_TYPE.COLOR_ACT, this, Point);
     }
 
     private void OnTriggerEnter(Collider other)

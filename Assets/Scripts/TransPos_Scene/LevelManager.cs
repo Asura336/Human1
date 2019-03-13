@@ -48,6 +48,7 @@ public class LevelManager : MonoBehaviour, IEventListener
         EventManager.Instance.AddListener(EVENT_TYPE.GET_KEY, this);
 
         SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
 
         p_player = GetComponentInChildren<PlayerAct>();
         p_controller = GetComponentInChildren<Controller>();
@@ -62,6 +63,9 @@ public class LevelManager : MonoBehaviour, IEventListener
     {
         // 需要丰富或者修改实现
         GlobalHub.Instance.OnGameSave();
+
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -69,11 +73,14 @@ public class LevelManager : MonoBehaviour, IEventListener
 #if UNITY_EDITOR
         Debug.Log(string.Format("OnSceneLoaded: {0}; mode: {1}", scene.name, mode));
 #endif
-        EventManager.Instance.RemoveRedundancies();
         EventManager.Instance.PostNotification(EVENT_TYPE.ENTERACT_UI, this, ENTERACT_TYPE.NULL);
         p_player.useGravity = true;
         PlayerTrans.position = _cachePlayerPos;
+    }
 
+    void OnSceneUnloaded(Scene scene)
+    {
+        EventManager.Instance.RemoveRedundancies();
         // 让引擎卸载不使用的资源
         Resources.UnloadUnusedAssets();
         System.GC.Collect();
