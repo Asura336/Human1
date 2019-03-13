@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b44d39be0b7d0224cb70e4578526a0ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p_cEnteract: {fileID: 0}
+  p_cEnteract: {fileID: 5186413568649824167}
   answer: 1
 --- !u!1 &4315225968430545804
 GameObject:
