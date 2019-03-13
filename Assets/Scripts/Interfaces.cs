@@ -50,7 +50,7 @@ public enum ENTERACT_TYPE
 }
 
 /// <summary>
-/// 互动音效的枚举
+/// 互动音效的枚举，与 <see cref="GlobalHub.SoundClips"/> 对应
 /// </summary>
 public enum SOUND
 {
