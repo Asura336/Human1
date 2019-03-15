@@ -42,6 +42,7 @@ public class CameraSeek : MonoBehaviour
     {
         vcsCount = 0;
         Ray ray = thisCamera.ScreenPointToRay(screenCenter);
+        Debug.DrawRay(ray.origin, ray.direction * raycastDis, Color.blue);
         int hitsCount = Physics.RaycastNonAlloc(ray, hits, raycastDis, seekLayer);
         if (hitsCount != 0)  // 加入新扫描的物件
         {

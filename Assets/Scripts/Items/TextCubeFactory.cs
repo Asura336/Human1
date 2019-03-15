@@ -28,7 +28,8 @@ public class TextCubeFactory : MonoBehaviour
             for (int j = 0; j < mazeWidth; j++)
             {
                 int p = dMaze.ToPoint(i, j);
-                Vector3 pivot = Maze.Point2Pos(i, j) + selfTransform.position;
+                //Vector3 pivot = Maze.Point2Pos(i, j) + selfTransform.position;
+                Vector3 pivot = maze.Point2Pos(i, j) + selfTransform.position;
                 var fresh = Instantiate(prefab.gameObject, pivot, Quaternion.identity, null);
                 var cube = fresh.GetComponent<TextCube>();
                 cube.posX = i;

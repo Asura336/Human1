@@ -158,23 +158,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallPrefab: {fileID: 1941160519085845311, guid: e75172502d48c124fba927bc985e04b5,
     type: 3}
+  cellHeight: 4
+  cellWidth: 4
   mazeHeight: 16
   mazeWidth: 16
   seed: 0
   outEdge: 1
-  enterOpen: 0
+  enterOpen: 1
   enterPoint_x: 0
   enterPoint_y: 4
-  exitOpen: 0
+  exitOpen: 1
   exitPoint_x: 15
   exitPoint_y: 13
-  useHole: 1
+  useHole: 0
   holeXs: 0100000006000000
   holeYs: 0100000006000000
   holeDXs: 0200000006000000
   holeDYs: 0200000008000000
-  endX: 8
-  endY: 8
+  endX: 15
+  endY: 13
 --- !u!114 &581581097
 MonoBehaviour:
   m_ObjectHideFlags: 0

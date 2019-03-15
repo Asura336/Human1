@@ -40,18 +40,19 @@ public class MazePlayerChecker : MonoBehaviour
      * 每隔指定时间间隔检查玩家的位置，提示迷宫路径。
      */
     readonly int infinity = Maze.infinity;
-    readonly float cellHeight = Maze.cellHeight;
-    readonly float cellWidth = Maze.cellWidth;
     readonly WaitForSeconds checkWait = new WaitForSeconds(0.75f);
     readonly Vector3[] m_dirs =
         new Vector3[] { Vector3.left, Vector3.forward, Vector3.right, Vector3.back, Vector3.up, };
     IEnumerator CheckPosition(Transform player)
     {
+        float cellHeight = maze.cellHeight;
+        float cellWidth = maze.cellWidth;
+
         Vector3 selfPos = selfTransform.position;
         int[] graph = dMaze.Maze;
         int[] DistGraph = maze.DistGraph;
         Func<int, int, int> toPoint = dMaze.ToPoint;
-        Func<Vector3, (int, int)> pos2Point = Maze.Pos2Point;
+        Func<Vector3, (int, int)> pos2Point = maze.Pos2Point;
         float mazeHeight = dMaze.XCount * cellHeight;
         float mazeWidth = dMaze.YCount * cellWidth;
         while (true)

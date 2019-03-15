@@ -9,7 +9,14 @@ public class Maze : MonoBehaviour
     Transform selfTransform;
     public DMaze dMaze;
     public GameObject wallPrefab;
-    //public GameObject wallPrefabSpecial;
+
+    [Header("迷宫单元尺寸")]
+    public float cellHeight = 4;
+    public float cellWidth = 4;
+    float HalfCellHeight { get { return cellHeight / 2; } }
+    float HalfCellWidth { get { return cellWidth / 2; } }
+
+    [Header("迷宫长和宽，表示为单元数量")]
     public int mazeHeight = 8;
     public int mazeWidth = 8;
     public int seed = 0;  // 随机数种子，每次游戏打开时不同
@@ -36,18 +43,11 @@ public class Maze : MonoBehaviour
     int[] _distGraph;
     public int[] DistGraph { get { return _distGraph; } }
 
-    // 迷宫单元尺寸
-    public const float cellHeight = 4;
-    public const float cellWidth = 4;
-    const float cellHeightHalf = cellHeight / 2;
-    const float cellWidthHalf = cellWidth / 2;
-
     public const int infinity = int.MaxValue / 2;
 
     private void Awake()
     {
         selfTransform = transform;
-        //if (wallPrefabSpecial == null) { wallPrefabSpecial = wallPrefab; }
         seed = GlobalHub.Instance.MazeSeed;
         dMaze = new DMaze(mazeHeight, mazeWidth) { rand = new System.Random(seed) };
         p_enter = dMaze.ToPoint(enterPoint_x, enterPoint_y);
@@ -68,12 +68,12 @@ public class Maze : MonoBehaviour
         dMaze.FindPathUnAlloc(endX, endY, ref _distGraph);
     }
 
-    public static Vector3 Point2Pos(int x, int z)
+    public Vector3 Point2Pos(int x, int z)
     {
-        return new Vector3(x * cellHeight + cellHeightHalf, 0, z * cellWidth + cellWidthHalf);
+        return new Vector3(x * cellHeight + HalfCellHeight, 0, z * cellWidth + HalfCellWidth);
     }
 
-    public static (int x, int y)Pos2Point(Vector3 mPos)
+    public (int x, int y) Pos2Point(Vector3 mPos)
     {
         return ((int)(mPos.x / cellHeight), (int)(mPos.z / cellWidth));
     }
@@ -92,12 +92,6 @@ public class Maze : MonoBehaviour
         }
     }
 
-    // 选择 InsWall(int, Vector3) 中使用的预制体
-    GameObject ChooseWallPrefab(int p)
-    {
-        return wallPrefab;  // 废案：复数种类的迷宫墙体预制件
-    }
-
     /// <summary>
     /// 为一个点实例化四周墙体
     /// </summary>
@@ -109,7 +103,7 @@ public class Maze : MonoBehaviour
         int cell = dMaze.Maze[p];
         GameObject p_obj = null;
 
-        Func<int, bool> onEdge = delegate (int point)
+        Func<int, bool> onEdge = (int point) =>
         {
             return outEdge && (!enterOpen || point != p_enter) && (!exitOpen || point != p_exit);
         };
@@ -117,21 +111,21 @@ public class Maze : MonoBehaviour
         // 判断 cell 与周围节点是否连通及 cell 是否是需要开口的出入口
         if ((cell & DMaze.up) == 0 && (x != 0 || onEdge(p)))
         {
-            p_obj = Instantiate(ChooseWallPrefab(p), pivot, Quaternion.identity, selfTransform);
+            p_obj = Instantiate(wallPrefab, pivot, Quaternion.identity, selfTransform);
             p_obj.transform.eulerAngles = new Vector3(0, -90, 0);
         }
         if ((cell & DMaze.right) == 0 && (y != mazeWidth - 1 || onEdge(p)))
         {
-            p_obj = Instantiate(ChooseWallPrefab(p), pivot, Quaternion.identity, selfTransform);
+            p_obj = Instantiate(wallPrefab, pivot, Quaternion.identity, selfTransform);
         }
         if ((cell & DMaze.down) == 0 && (x != mazeHeight - 1 || onEdge(p)))
         {
-            p_obj = Instantiate(ChooseWallPrefab(p), pivot, Quaternion.identity, selfTransform);
+            p_obj = Instantiate(wallPrefab, pivot, Quaternion.identity, selfTransform);
             p_obj.transform.eulerAngles = new Vector3(0, 90, 0);
         }
         if ((cell & DMaze.left) == 0 && (y != 0 || onEdge(p)))
         {
-            p_obj = Instantiate(ChooseWallPrefab(p), pivot, Quaternion.identity, selfTransform);
+            p_obj = Instantiate(wallPrefab, pivot, Quaternion.identity, selfTransform);
             p_obj.transform.eulerAngles = new Vector3(0, 180, 0);
         }
     }
