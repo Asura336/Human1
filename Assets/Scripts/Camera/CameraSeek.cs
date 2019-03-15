@@ -82,7 +82,7 @@ public class CameraSeek : MonoBehaviour
         while (delVcs.Count > 0)
         {
             var thing = delVcs.Pop();
-            thing.IsTrig = false;
+            if (thing != null) { thing.IsTrig = false; }
             seekTimes.Remove(thing);
         }
     }
