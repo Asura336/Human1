@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +13,7 @@ public class VisibilityChanger : MonoBehaviour
     // need "VcRaycastField" layer
     public bool initVisibility = true;
     MeshRenderer[] childMeshes;
-    GameObject[] childObjs;
+    Collider[] childColliders;
 
     WaitForSeconds y_wait;
     [SerializeField]float resetWait = 0;
@@ -35,11 +37,10 @@ public class VisibilityChanger : MonoBehaviour
     private void Start()
     {
         childMeshes = GetComponentsInChildren<MeshRenderer>();
-        childObjs = new GameObject[childMeshes.Length];
-        for (int i = 0; i < childObjs.Length; i++)
-        {
-            childObjs[i] = childMeshes[i].gameObject;
-        }
+        var c = from cell in GetComponentsInChildren<Collider>()
+                where !cell.isTrigger
+                select cell;
+        childColliders = c.ToArray();
 
         y_wait = new WaitForSeconds(resetWait);
         SetChildVisibility(initVisibility);
@@ -47,10 +48,8 @@ public class VisibilityChanger : MonoBehaviour
 
     void SetChildVisibility(bool value)
     {
-        foreach (var child in childObjs)
-        {
-            child.SetActive(value);
-        }
+        foreach (var coll in childColliders) { coll.enabled = value; }
+        foreach (var mesh in childMeshes) { mesh.enabled = value; }
     }
 
     IEnumerator ResetVisibilityAsync()

@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using RandMaze;
 
-[RequireComponent(typeof(Maze))]
+[RequireComponent(typeof(BaseMaze))]
 public class ColumnBuilder : MonoBehaviour
 {
-    Maze maze;
+    BaseMaze maze;
     Transform selfTransform;
 
     public GameObject columnPrefab;
@@ -15,7 +15,7 @@ public class ColumnBuilder : MonoBehaviour
     private void Start()
     {
         selfTransform = transform;
-        maze = GetComponent<Maze>();
+        maze = GetComponent<BaseMaze>();
 
         StartCoroutine(BuildColumnAsync());
     }

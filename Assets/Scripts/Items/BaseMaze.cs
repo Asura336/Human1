@@ -21,11 +21,7 @@ public class BaseMaze : MonoBehaviour
     public int mazeWidth = 8;
     public int seed = 0;  // 随机数种子，每次游戏打开时不同
 
-    [Header("入口（如果在边缘）是否开启及入口坐标")]
-    public bool enterOpen = false;
     public int enterPoint_x = 0, enterPoint_y = 4;  // 入口坐标
-    [Header("出口（如果在边缘）是否开启及出口坐标")]
-    public bool exitOpen = false;
     public int exitPoint_x = 8, exitPoint_y = 4;  // 出口坐标
     protected int p_enter, p_exit;  // 入口和出口指针
 
@@ -49,8 +45,7 @@ public class BaseMaze : MonoBehaviour
         selfTransform = transform;
         seed = GlobalHub.Instance.MazeSeed;
         dMaze = new DMaze(mazeHeight, mazeWidth) { rand = new System.Random(seed) };
-        p_enter = dMaze.ToPoint(enterPoint_x, enterPoint_y);
-        p_exit = dMaze.ToPoint(exitPoint_x, exitPoint_y);
+
         if (useHole)
         {
             for (int i = 0; i < holeXs.Length; i++)
