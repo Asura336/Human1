@@ -64,6 +64,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
+    - _MinL: 0.5
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
@@ -75,6 +76,6 @@ Material:
     - _dZ: 15
     - _nZ: 0.25
     m_Colors:
-    - _Color: {r: 1, g: 0.9782609, b: 0, a: 1}
+    - _Color: {r: 0.99636734, g: 1, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _NColor: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 1}
+    - _NColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
