@@ -32,8 +32,11 @@ public class ColumnBuilder : MonoBehaviour
             for (int j = 0; j < mazeWidth; j++)
             {
                 int p = dMaze.ToPoint(i, j);
-                Vector3 pivot = point2Pos(i, j) + selfTransform.position;
-                Instantiate(columnPrefab, pivot, Quaternion.identity, selfTransform);
+                if (!maze.useHole || !dMaze.Hole[p])
+                {
+                    Vector3 pivot = point2Pos(i, j) + selfTransform.position;
+                    Instantiate(columnPrefab, pivot, Quaternion.identity, selfTransform);
+                }
                 yield return null;
             }
         }
