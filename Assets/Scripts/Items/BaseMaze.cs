@@ -44,7 +44,7 @@ public class BaseMaze : MonoBehaviour
     {
         selfTransform = transform;
         seed = GlobalHub.Instance.MazeSeed;
-        dMaze = new DMaze(mazeHeight, mazeWidth) { rand = new System.Random(seed) };
+        dMaze = new DMaze(mazeHeight, mazeWidth) { Rand = new System.Random(seed) };
 
         if (useHole)
         {

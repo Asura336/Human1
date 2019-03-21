@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RandMaze</name>
+    </assembly>
+    <members>
+        <member name="T:RandMaze.DMaze">
+            <summary>
+            生成四方向随机迷宫
+            </summary>
+        </member>
+        <member name="P:RandMaze.DMaze.Maze">
+            <summary>
+            存放迷宫单元，其大小在构造函数中决定
+            </summary>
+        </member>
+        <member name="P:RandMaze.DMaze.Hole">
+            <summary>
+            迷宫中的空洞，连接的空洞被视为一个单元
+            </summary>
+        </member>
+        <member name="P:RandMaze.DMaze.XCount">
+            <summary>
+            迷宫的行数，迷宫单元在x轴上的个数
+            </summary>
+        </member>
+        <member name="P:RandMaze.DMaze.YCount">
+            <summary>
+            迷宫的列数，迷宫单元在y轴上的个数
+            </summary>
+        </member>
+        <member name="P:RandMaze.DMaze.Capacity">
+            <summary>
+            迷宫单元的容量
+            </summary>
+        </member>
+        <member name="P:RandMaze.DMaze.Rand">
+            <summary>
+            迷宫组件使用的随机数发生器，可在外部赋值
+            </summary>
+        </member>
+        <member name="F:RandMaze.DMaze.up">
+            <summary>
+            在<see cref="P:RandMaze.DMaze.Maze"/>中表示与上方单元连通
+            </summary>
+        </member>
+        <member name="F:RandMaze.DMaze.right">
+            <summary>
+            在<see cref="P:RandMaze.DMaze.Maze"/>中表示与右方单元连通
+            </summary>
+        </member>
+        <member name="F:RandMaze.DMaze.down">
+            <summary>
+            在<see cref="P:RandMaze.DMaze.Maze"/>中表示与下方单元连通
+            </summary>
+        </member>
+        <member name="F:RandMaze.DMaze.left">
+            <summary>
+            在<see cref="P:RandMaze.DMaze.Maze"/>中表示与左方单元连通
+            </summary>
+        </member>
+        <member name="M:RandMaze.DMaze.#ctor(System.Int32,System.Int32)">
+            <summary>
+            生成 x 行 y 列的迷宫
+            </summary>
+            <param name="x">迷宫行数</param>
+            <param name="y">迷宫列数</param>
+        </member>
+        <member name="M:RandMaze.DMaze.ClearMaze">
+            <summary>
+            将<see cref="P:RandMaze.DMaze.Maze"/>和<see cref="F:RandMaze.DMaze.visited"/>的内容置零
+            </summary>
+        </member>
+        <member name="M:RandMaze.DMaze.SetHole(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            设置迷宫中的空洞
+            </summary>
+            <param name="x">空洞左上角 x 坐标</param>
+            <param name="y">空洞左上角 y 坐标</param>
+            <param name="dx">空洞 x 方向宽度</param>
+            <param name="dy">空洞 y 方向宽度</param>
+        </member>
+        <member name="M:RandMaze.DMaze.ClearHole">
+            <summary>
+            将<see cref="P:RandMaze.DMaze.Hole"/>的内容置零
+            </summary>
+        </member>
+        <member name="M:RandMaze.DMaze.ToPoint(System.Int32,System.Int32)">
+            <summary>
+            将迷宫中二维坐标转化为容器数组下标
+            </summary>
+            <param name="x">输入坐标x</param>
+            <param name="y">输入坐标y</param>
+            <returns></returns>
+        </member>
+        <member name="M:RandMaze.DMaze.BuildHole">
+            <summary>
+            处理空洞信息，使空洞范围内成员全连通
+            </summary>
+        </member>
+        <member name="M:RandMaze.DMaze.DfsBuild(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            DFS 生成迷宫
+            </summary>
+            <param name="x">起点 x 坐标</param>
+            <param name="y">起点 y 坐标</param>
+            <param name="useHole">是否使用<see cref="P:RandMaze.DMaze.Hole"/>中的信息生成空洞</param>
+        </member>
+        <member name="M:RandMaze.DMaze.FindPathUnAlloc(System.Int32,System.Int32,System.Int32[]@)">
+            <summary>
+            BFS 扫描，在外部保存扫描结果
+            </summary>
+            <param name="sx">起点 x 坐标</param>
+            <param name="sy">起点 y 坐标</param>
+            <param name="disGraph">保存扫描结果，保存对应索引的单元与起点距离</param>
+        </member>
+    </members>
+</doc>
