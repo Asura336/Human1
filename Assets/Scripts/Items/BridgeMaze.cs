@@ -9,6 +9,7 @@ public class BridgeMaze : BaseMaze
     Dictionary<(int, int), GameObject> m_active = new Dictionary<(int, int), GameObject>();
     Stack<KeyValuePair<(int, int), GameObject>> _dellStack =
         new Stack<KeyValuePair<(int, int), GameObject>>();
+    SimObjPool objPool;
 
     int _bridgePointX = -1, _bridgePointY = -1;
     (int,int)BridgePoint
@@ -50,23 +51,23 @@ public class BridgeMaze : BaseMaze
     protected override void Start()
     {
         base.Start();
-        if (LevelManager.Instance)
-        {
-            StartCoroutine(CheckPosition(LevelManager.Instance.PlayerTrans));
-        }
+        objPool = new SimObjPool(wallPrefab);
+        var li = LevelManager.Instance;
+        if (li != null) { StartCoroutine(CheckPosition(li.PlayerTrans)); }
     }
 
-    // TODO: pool
     GameObject NewBridge(Vector3 position)
     {
-        var obj = Instantiate(wallPrefab, position, Quaternion.identity, selfTransform);
-        return obj;
+        var o = objPool.PopCell();
+        o.transform.position = position;
+        return o;
     }
 
-    // TODO: pool
     void DelBridgeObj(GameObject obj)
     {
-        DestroyImmediate(obj);
+        obj.transform.position = Vector3.zero;
+        obj.transform.rotation = Quaternion.identity;
+        objPool.CollectCell(obj);
     }
 
     IEnumerator CheckPosition(Transform player)
