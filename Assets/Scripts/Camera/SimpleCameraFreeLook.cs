@@ -159,8 +159,8 @@ public class SimpleCameraFreeLook : MonoBehaviour
     public void SetPosForce()
     {
         dir = new Vector3(Mathf.Cos(alpha) * Mathf.Sin(sigma),
-                                 Mathf.Cos(sigma),
-                                 Mathf.Sin(alpha) * Mathf.Sin(sigma));
+            Mathf.Cos(sigma),
+            Mathf.Sin(alpha) * Mathf.Sin(sigma));
         orderTrans = Center + dir * maxRadius;
         selfTransform.position = orderTrans;
         var newForward = Quaternion.LookRotation(Center - selfTransform.position);
@@ -171,5 +171,6 @@ public class SimpleCameraFreeLook : MonoBehaviour
     public void SetAlphaBack()
     {
         AlphaAngle = 270 - center.localEulerAngles.y;
+        sigma = 75 * toRadian;
     }
 }
