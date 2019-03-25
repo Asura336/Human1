@@ -56,6 +56,7 @@ public class ColorExchanger: IEnteract
 
         gi.Url2Point[Url] = Point;
         ei.PostNotification(EVENT_TYPE.COLOR_ACT, parent, Point);
+        ei.PostNotification(EVENT_TYPE.COLOR_GRADIENT, parent, Url);
 
         wrap.ActClose();
         ei.PostNotification(EVENT_TYPE.ENTERACT_UI, wrap, EnteractType);
