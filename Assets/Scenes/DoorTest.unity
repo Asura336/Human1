@@ -173,7 +173,7 @@ MonoBehaviour:
   changePos: 1
   nextPos: {x: 10, y: 0, z: -4}
   changeEuler: 0
-  nextEuler: {x: 0, y: 0, z: 0}
+  nextForward: {x: 0, y: 0, z: 0}
 --- !u!1 &84471460
 GameObject:
   m_ObjectHideFlags: 0
@@ -1494,6 +1494,15 @@ PrefabInstance:
       propertyPath: points.Array.data[3]
       value: 
       objectReference: {fileID: 1332445072}
+    - target: {fileID: 1983697653, guid: ff45aa08c462ca74aad812d655a0a0c3, type: 3}
+      propertyPath: setType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 947301405714178178, guid: ff45aa08c462ca74aad812d655a0a0c3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bcebc82385a55774faf8637a6d9a9088, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff45aa08c462ca74aad812d655a0a0c3, type: 3}
 --- !u!1 &1983697652 stripped
@@ -1680,6 +1689,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4315225967585765873, guid: 63e5c5a105f6c8b4a80a4d3615169a08,
+        type: 3}
+      propertyPath: senderUrl
+      value: DT_0
+      objectReference: {fileID: 0}
     - target: {fileID: 4315225968430545794, guid: 63e5c5a105f6c8b4a80a4d3615169a08,
         type: 3}
       propertyPath: point
@@ -1688,11 +1702,6 @@ PrefabInstance:
     - target: {fileID: 4315225968430545794, guid: 63e5c5a105f6c8b4a80a4d3615169a08,
         type: 3}
       propertyPath: url
-      value: DT_0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4315225967585765873, guid: 63e5c5a105f6c8b4a80a4d3615169a08,
-        type: 3}
-      propertyPath: senderUrl
       value: DT_0
       objectReference: {fileID: 0}
     - target: {fileID: 4315225968430545804, guid: 63e5c5a105f6c8b4a80a4d3615169a08,
