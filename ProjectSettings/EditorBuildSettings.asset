@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/main/Level_yellow_0.unity
     guid: cdcea98751bf8764b930d6d531cff0cb
   - enabled: 1
+    path: Assets/Scenes/main/Level_yellow_1.unity
+    guid: 02cb512469a07ed4faff5d3c92984922
+  - enabled: 1
     path: Assets/Scenes/DoorTest.unity
     guid: da03d13695a25964087e48ff317134a4
   - enabled: 1

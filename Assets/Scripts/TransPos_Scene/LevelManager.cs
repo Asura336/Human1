@@ -24,6 +24,8 @@ public class LevelManager : MonoBehaviour, IEventListener
     [HideInInspector] public Controller p_controller;
     [HideInInspector] public SimpleCameraFreeLook p_camera;
 
+    Scene p_currentScene;
+
     /// <summary>
     /// 保险机制，防止切换场景时玩家落到地面以下
     /// </summary>
@@ -76,6 +78,7 @@ public class LevelManager : MonoBehaviour, IEventListener
         EventManager.Instance.PostNotification(EVENT_TYPE.ENTERACT_UI, this, ENTERACT_TYPE.NULL);
         p_player.useGravity = true;
         PlayerTrans.position = _cachePlayerPos;
+        p_currentScene = scene;
     }
 
     void OnSceneUnloaded(Scene scene)
@@ -163,11 +166,22 @@ public class LevelManager : MonoBehaviour, IEventListener
                 }
                 break;
             case EVENT_TYPE.FALL_OUT_RANGE:
-                ChangeScene(GlobalHub.initPlayerScene,
-                            GlobalHub.initPlayerPos, 
-                            GlobalHub.initPlayerForward);
+                OnFallOutRange();
                 break;
             default: return;
         }
+    }
+
+    // 特例增加时丰富实现
+    void OnFallOutRange()
+    {
+        if (p_currentScene.name.Equals("Level_yellow_1"))
+        {
+            ChangeScene("Level_yellow_0", new Vector3(0, 0, 14), Vector3.forward);
+            return;
+        }
+
+        ChangeScene(GlobalHub.initPlayerScene, 
+            GlobalHub.initPlayerPos, GlobalHub.initPlayerForward);
     }
 }

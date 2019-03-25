@@ -1685,11 +1685,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f87b771c6dafbee4ab86fecf7d7de706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: BridgeTest
+  nextScene: Level_yellow_1
   changePos: 1
-  nextPos: {x: -10, y: 0, z: 56.4}
+  nextPos: {x: 0, y: 0, z: 0}
   changeEuler: 1
-  nextForward: {x: 1, y: 0, z: 0.5}
+  nextForward: {x: 0, y: 0, z: 1}
 --- !u!65 &1680616430
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2569,7 +2569,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextScene: Level_yellow_0
   changePos: 1
-  nextPos: {x: 40, y: 0, z: 0}
+  nextPos: {x: -10, y: 0, z: 0}
   changeEuler: 1
   nextForward: {x: -1, y: 0, z: 0}
 --- !u!65 &2133036424
@@ -2660,7 +2660,7 @@ GameObject:
   - component: {fileID: 4061251464949326004}
   - component: {fileID: 4061251464949326008}
   m_Layer: 10
-  m_Name: cT_blue0
+  m_Name: Level0_cT_blue0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
@@ -2865,7 +2865,7 @@ GameObject:
   - component: {fileID: 7583247878425508768}
   - component: {fileID: 7583247878425508780}
   m_Layer: 10
-  m_Name: cT_yellow0
+  m_Name: Level0_cT_yellow0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1

@@ -344,7 +344,7 @@ PrefabInstance:
     - target: {fileID: 4315225967585765874, guid: 63e5c5a105f6c8b4a80a4d3615169a08,
         type: 3}
       propertyPath: m_Name
-      value: ColoredEDoor
+      value: Level_white_0_cD_green0
       objectReference: {fileID: 0}
     - target: {fileID: 4315225967585765875, guid: 63e5c5a105f6c8b4a80a4d3615169a08,
         type: 3}
@@ -421,6 +421,11 @@ PrefabInstance:
       propertyPath: m_Size.z
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 2410035736049847048, guid: 63e5c5a105f6c8b4a80a4d3615169a08,
+        type: 3}
+      propertyPath: url
+      value: Level_white_0_cD_green0
+      objectReference: {fileID: 0}
     - target: {fileID: 5186413568649862023, guid: 63e5c5a105f6c8b4a80a4d3615169a08,
         type: 3}
       propertyPath: m_Layer
@@ -430,11 +435,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 2410035736049847048, guid: 63e5c5a105f6c8b4a80a4d3615169a08,
-        type: 3}
-      propertyPath: url
-      value: Level_white_0_cD_green0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63e5c5a105f6c8b4a80a4d3615169a08, type: 3}
