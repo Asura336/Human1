@@ -93,10 +93,10 @@ public class BridgeMaze : BaseMaze
     }
 
     /// <summary>
-    /// 为一个点实例化四周墙体
+    /// 在指定位置实例化桥模型
     /// </summary>
-    /// <param name="p">迷宫点的指针</param>
-    /// <param name="pivot">迷宫单元的坐标</param>
+    /// <param name="p">迷宫节点下标</param>
+    /// <param name="pivot">节点对应的世界坐标</param>
     void InsBridge(int p, Vector3 pivot)
     {
         int x = p / mazeHeight, y = p % mazeWidth;
@@ -106,7 +106,7 @@ public class BridgeMaze : BaseMaze
 
         Func<int, int, int> toPoint = dMaze.ToPoint;
 
-        // 判断 cell 与周围节点是否连通及 cell 是否是需要开口的出入口
+        // 判断 cell 与周围节点是否连通及 cell 是否是空穴，每个节点计算4次
         if ((cell & DMaze.up) != 0 && x != 0 &&
             !(dMaze.Hole[p] && dMaze.Hole[toPoint(x - 1, y)]))
         {
