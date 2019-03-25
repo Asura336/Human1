@@ -1658,7 +1658,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1680616428
 Transform:
   m_ObjectHideFlags: 0
@@ -2567,11 +2567,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f87b771c6dafbee4ab86fecf7d7de706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: DoorTest
+  nextScene: Level_yellow_0
   changePos: 1
-  nextPos: {x: 0, y: 0, z: 0}
+  nextPos: {x: -40, y: 0, z: 0}
   changeEuler: 1
-  nextForward: {x: -1, y: 0, z: 0}
+  nextForward: {x: 1, y: 0, z: 0}
 --- !u!65 &2133036424
 BoxCollider:
   m_ObjectHideFlags: 0
