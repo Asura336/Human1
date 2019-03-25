@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 84471462}
   - component: {fileID: 84471466}
   m_Layer: 10
-  m_Name: ColorBall
+  m_Name: DoorTest_cT_red0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   setType: 1
   point: 1
-  url: DT_1
+  url: DoorTest_cT_red0
 --- !u!135 &84471463
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1632,7 +1632,7 @@ PrefabInstance:
     - target: {fileID: 4315225967585765874, guid: 63e5c5a105f6c8b4a80a4d3615169a08,
         type: 3}
       propertyPath: m_Name
-      value: EDoor
+      value: ColorTest_cD_red0
       objectReference: {fileID: 0}
     - target: {fileID: 4315225967585765875, guid: 63e5c5a105f6c8b4a80a4d3615169a08,
         type: 3}
@@ -1693,6 +1693,11 @@ PrefabInstance:
         type: 3}
       propertyPath: senderUrl
       value: DT_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410035736049847048, guid: 63e5c5a105f6c8b4a80a4d3615169a08,
+        type: 3}
+      propertyPath: url
+      value: ColorTest_cD_red0
       objectReference: {fileID: 0}
     - target: {fileID: 4315225968430545794, guid: 63e5c5a105f6c8b4a80a4d3615169a08,
         type: 3}

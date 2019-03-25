@@ -2567,9 +2567,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f87b771c6dafbee4ab86fecf7d7de706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: Level_yellow_0
+  nextScene: DoorTest
   changePos: 1
-  nextPos: {x: -10, y: 0, z: 0}
+  nextPos: {x: 0, y: 0, z: 0}
   changeEuler: 1
   nextForward: {x: -1, y: 0, z: 0}
 --- !u!65 &2133036424

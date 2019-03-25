@@ -487,7 +487,7 @@ PrefabInstance:
     - target: {fileID: 4315225967585765874, guid: 63e5c5a105f6c8b4a80a4d3615169a08,
         type: 3}
       propertyPath: m_Name
-      value: ColoredEDoor
+      value: DoorTest_1_cD_red0
       objectReference: {fileID: 0}
     - target: {fileID: 4315225967585765875, guid: 63e5c5a105f6c8b4a80a4d3615169a08,
         type: 3}
@@ -544,14 +544,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4315225968430545794, guid: 63e5c5a105f6c8b4a80a4d3615169a08,
-        type: 3}
-      propertyPath: url
-      value: DT1_1
-      objectReference: {fileID: 0}
     - target: {fileID: 4315225967585765873, guid: 63e5c5a105f6c8b4a80a4d3615169a08,
         type: 3}
       propertyPath: senderUrl
+      value: DT1_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410035736049847048, guid: 63e5c5a105f6c8b4a80a4d3615169a08,
+        type: 3}
+      propertyPath: url
+      value: DoorTest_1_cD_red0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4315225968430545794, guid: 63e5c5a105f6c8b4a80a4d3615169a08,
+        type: 3}
+      propertyPath: url
       value: DT1_1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -646,7 +651,7 @@ MonoBehaviour:
   changePos: 1
   nextPos: {x: 0, y: 0, z: -4}
   changeEuler: 0
-  nextEuler: {x: 0, y: 0, z: 0}
+  nextForward: {x: 0, y: 0, z: 0}
 --- !u!65 &1005734441
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -964,7 +969,7 @@ GameObject:
   - component: {fileID: 1237330349}
   - component: {fileID: 1237330348}
   m_Layer: 10
-  m_Name: ColorBall
+  m_Name: DoorTest1_cT_red0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1011,7 +1016,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   setType: 1
   point: 1
-  url: DT1_0
+  url: DoorTest1_cT_red0
 --- !u!135 &1237330350
 SphereCollider:
   m_ObjectHideFlags: 0

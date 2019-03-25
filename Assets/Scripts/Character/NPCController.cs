@@ -84,4 +84,9 @@ public class NPCController : MonoBehaviour
             focusing = false;
         }
     }
+
+    void AnimeEventOnLand()
+    {
+
+    }
 }

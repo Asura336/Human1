@@ -103,6 +103,7 @@ public class InteractObject : MonoBehaviour, IEnteract, IEventListener
     {
         selfTransform = transform;
         selfRenderer = GetComponent<Renderer>();
+        if (selfRenderer == null) { selfRenderer = GetComponentInChildren<Renderer>(); }
 
         var u2p = GlobalHub.Instance.Url2Point;
         if (u2p.ContainsKey(url))
