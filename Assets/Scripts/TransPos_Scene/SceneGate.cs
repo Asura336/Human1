@@ -20,7 +20,13 @@ public class SceneGate : MonoBehaviour
     private void Start()
     {
         selfCollider = GetComponent<Collider>();
-        selfCollider.isTrigger = true;
+#if UNITY_EDITOR
+        if (!selfCollider.isTrigger)
+        {
+            Debug.LogWarning(
+                string.Format("碰撞器{0}未设置为触发器，检查是否必须", gameObject.name));
+        }
+#endif
     }
 
     private void OnTriggerEnter(Collider other)

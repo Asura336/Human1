@@ -2567,11 +2567,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f87b771c6dafbee4ab86fecf7d7de706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: Level_yellow_0
+  nextScene: LevelHubAlter
   changePos: 1
-  nextPos: {x: -40, y: 0, z: 0}
-  changeEuler: 1
-  nextForward: {x: 1, y: 0, z: 0}
+  nextPos: {x: 0, y: 0, z: -5}
+  changeEuler: 0
+  nextForward: {x: 0, y: 0, z: 0}
 --- !u!65 &2133036424
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2602,7 +2602,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3aa40b79dc579264788f010628855182, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
