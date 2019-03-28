@@ -1496,6 +1496,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pool_inside
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9f23d0b8b1364c5448b52beabfac7b2c, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9f23d0b8b1364c5448b52beabfac7b2c, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.1
