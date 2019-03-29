@@ -1,39 +1,40 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// 状态控制使<see cref="SceneGate"/>组件生效
 /// </summary>
 [RequireComponent(typeof(SceneGate))]
-public class LightingGate : MonoBehaviour, IPhysicsInteract, IEventListener
+public class LightingGate : MonoBehaviour, IEventListener
 {
-    public void StateChange()
+    public void StateCheck()
     {
         bool trig = _bin == binAnswer;
-        gateTrigger.isTrigger = trig;
-        selfMaterial.SetColor("_AmbientColor", trig ? ambientColor1 : ambientColor0);
-        GlobalHub.Instance.Url2Point[url + "_state"] = trig ? 1 : 0;
-    }
 
-    public void StateReset()
-    {
-        
+        if (gateTrigger != null) { gateTrigger.isTrigger = trig; }
+
+        selfMaterial.SetColor("_AmbientColor", trig ? ambientColor1 : ambientColor0);
+
+        if (showText != null) {
+            showText.text = trig ? string.Empty : string.Format("{0} : {1}", _bin, binAnswer);
+        }
     }
 
     public void OnEvent(EVENT_TYPE eventType, Component sender, object param = null)
     {
-        if (eventType == EVENT_TYPE.AUDIO && param.Equals(SOUND.STEP_BUTTON))
+        // 没有安全检查
+        if (eventType == EVENT_TYPE.STEP_BUTTON)
         {
-            for (int i = 0; i < buttons.Length; i++)
+            var post = (SBPoster)param;
+            Debug.Log("Get: "+post.dParam.ToString()); 
+            if (post.strParam.Equals(url))
             {
-                if (ReferenceEquals(buttons[i], sender))
-                {
-                    _bin ^= 1 << i;
-                    GlobalHub.Instance.Url2Point[url] = _bin;
-                    Debug.Log(string.Format("OnEvent: {0}, {1}", _bin, binAnswer));
-                    return;
-                }
+                _bin ^= post.dParam;
+                GlobalHub.Instance.Url2Point[url] = _bin;
+                StateCheck();
             }
         }
     }
@@ -43,14 +44,15 @@ public class LightingGate : MonoBehaviour, IPhysicsInteract, IEventListener
 
     int _bin = 0;
     int binAnswer = -1;
-    [Header("设定此值与 buttons 的长度一致，没有安全检查")]
+    [Header("取随机数种子的后几位，没有安全检查")]
     public int binMask = 3;
 
     Collider gateTrigger;
     Renderer selfRenderer;
     Material selfMaterial;
+    Text showText;
+    
     public Color ambientColor0, ambientColor1;
-    public StepButton[] buttons;
 
     void Start()
     {
@@ -61,14 +63,19 @@ public class LightingGate : MonoBehaviour, IPhysicsInteract, IEventListener
         gateTrigger = GetComponent<Collider>();
         selfRenderer = GetComponent<Renderer>();
         selfMaterial = selfRenderer.material;
+        showText = GetComponentInChildren<Text>();
 
-        EventManager.Instance.AddListener(EVENT_TYPE.AUDIO, this);
+        EventManager.Instance.AddListener(EVENT_TYPE.STEP_BUTTON, this);
         // init
         var u2p = GlobalHub.Instance.Url2Point;
         if (u2p.ContainsKey(url))
         {
             _bin = u2p[url];
-            StateChange();
+            StateCheck();
+        }
+        else
+        {
+            showText.text = string.Format("{0} : {1}", _bin, binAnswer);
         }
     }  
 }

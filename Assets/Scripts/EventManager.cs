@@ -84,7 +84,7 @@ public class EventManager
 }
 
 /// <summary>
-/// UI 侦听器的事件类型
+/// <see cref="EventManager"/>的事件类型
 /// </summary>
 public enum EVENT_TYPE
 {
@@ -98,5 +98,6 @@ public enum EVENT_TYPE
     AUDIO,  // 互动动作的音效
     GET_KEY,  // 与 ColorSpring 互动
     FALL_OUT_RANGE,  // 角色下落
+    STEP_BUTTON,  // 踩踏板关联的组件
     ELSE
 }

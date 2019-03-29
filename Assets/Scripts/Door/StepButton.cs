@@ -39,10 +39,6 @@ public class StepButton : MonoBehaviour, IPhysicsInteract, IEventListener
         selfAnimator = GetComponent<Animator>();
         
         i_follower = follower.GetComponent<IPhysicsInteract>();
-        if (i_follower == null)
-        {
-            Debug.LogAssertionFormat(this, "i_connection is null.");
-        }
 
         selfAudioSource = GetComponent<AudioSource>();
         EventManager.Instance.AddListener(EVENT_TYPE.AUDIO, this);
