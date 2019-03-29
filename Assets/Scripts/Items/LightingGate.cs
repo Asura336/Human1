@@ -10,34 +10,6 @@ using UnityEngine.UI;
 [RequireComponent(typeof(SceneGate))]
 public class LightingGate : MonoBehaviour, IEventListener
 {
-    public void StateCheck()
-    {
-        bool trig = _bin == binAnswer;
-
-        if (gateTrigger != null) { gateTrigger.isTrigger = trig; }
-
-        selfMaterial.SetColor("_AmbientColor", trig ? ambientColor1 : ambientColor0);
-
-        if (showText != null) {
-            showText.text = trig ? string.Empty : string.Format("{0} : {1}", _bin, binAnswer);
-        }
-    }
-
-    public void OnEvent(EVENT_TYPE eventType, Component sender, object param = null)
-    {
-        // 没有安全检查
-        if (eventType == EVENT_TYPE.STEP_BUTTON)
-        {
-            var post = (SBPoster)param;
-            if (post.strParam.Equals(url))
-            {
-                _bin ^= post.dParam;
-                GlobalHub.Instance.Url2Point[url] = _bin;
-                StateCheck();
-            }
-        }
-    }
-
     [Header("设置物体的唯一标识")]
     public string url;
 
@@ -72,9 +44,33 @@ public class LightingGate : MonoBehaviour, IEventListener
             _bin = u2p[url];
             StateCheck();
         }
-        else
+        else { showText.text = string.Format("{0} : {1}", _bin, binAnswer); }
+    }
+
+    void StateCheck()
+    {
+        bool trig = _bin == binAnswer;
+
+        if (gateTrigger != null) { gateTrigger.isTrigger = trig; }
+        selfMaterial.SetColor("_AmbientColor", trig ? ambientColor1 : ambientColor0);
+        if (showText != null)
         {
-            showText.text = string.Format("{0} : {1}", _bin, binAnswer);
+            showText.text = trig ? string.Empty : string.Format("{0} : {1}", _bin, binAnswer);
         }
-    }  
+    }
+
+    public void OnEvent(EVENT_TYPE eventType, Component sender, object param = null)
+    {
+        // 没有安全检查
+        if (eventType == EVENT_TYPE.STEP_BUTTON)
+        {
+            var post = (SBPoster)param;
+            if (post.strParam.Equals(url))
+            {
+                _bin ^= post.dParam;
+                GlobalHub.Instance.Url2Point[url] = _bin;
+                StateCheck();
+            }
+        }
+    }
 }

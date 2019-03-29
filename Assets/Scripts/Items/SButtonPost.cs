@@ -27,6 +27,9 @@ public class SButtonPost : MonoBehaviour, IPhysicsInteract
     public string strParam = "LevelHubAlter_LG0";
 }
 
+/// <summary>
+/// <see cref="SButtonPost"/>传递消息的结构体
+/// </summary>
 public struct SBPoster
 {
     public string strParam;
