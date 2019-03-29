@@ -29,7 +29,6 @@ public class LightingGate : MonoBehaviour, IEventListener
         if (eventType == EVENT_TYPE.STEP_BUTTON)
         {
             var post = (SBPoster)param;
-            Debug.Log("Get: "+post.dParam.ToString()); 
             if (post.strParam.Equals(url))
             {
                 _bin ^= post.dParam;
@@ -57,7 +56,7 @@ public class LightingGate : MonoBehaviour, IEventListener
     void Start()
     {
         int seed = GlobalHub.Instance.MazeSeed;
-        int mask = 1 << binMask - 1;
+        int mask = (1 << binMask) - 1;
         binAnswer = seed & mask;
 
         gateTrigger = GetComponent<Collider>();

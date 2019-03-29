@@ -15,7 +15,6 @@ public class SButtonPost : MonoBehaviour, IPhysicsInteract
                 dParam = dParam,
                 strParam = strParam
             });
-        Debug.Log(string.Format("Send: {0}", dParam));
     }
 
     public void StateReset()
