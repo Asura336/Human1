@@ -83,7 +83,9 @@
         - <date = 12> 迷宫内提示音效加入
 - <datr = Mar25>
     - 加入新的关卡单元
-    - 加入针对 GameObject 的对象池，关于泛用对象池暂时没有头绪，也许可以按原型种类分别设计？
+    - 加入针对 GameObject 的对象池，考虑加入泛用对象池。
+- <datr = Apr1>
+    - SceneGate 组件及场景节点 "LevelGates" 下的物件应设置层为 "Ignore Raycast"
 
 ## TODO
 

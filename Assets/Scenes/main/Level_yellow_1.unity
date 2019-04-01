@@ -2600,7 +2600,7 @@ GameObject:
   m_Component:
   - component: {fileID: 215140837}
   - component: {fileID: 215140836}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LevelGates
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6041,7 +6041,7 @@ GameObject:
   m_Component:
   - component: {fileID: 621506472}
   - component: {fileID: 621506473}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EnterMark
   m_TagString: Untagged
   m_Icon: {fileID: 0}

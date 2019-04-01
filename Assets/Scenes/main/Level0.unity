@@ -319,7 +319,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 362551294}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LevelGates
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -537,7 +537,7 @@ GameObject:
   m_Component:
   - component: {fileID: 400769708}
   - component: {fileID: 400769709}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EnterMark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -678,7 +678,7 @@ GameObject:
   - component: {fileID: 658354834}
   - component: {fileID: 658354836}
   - component: {fileID: 658354835}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: HubGate
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -227,7 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 380697584}
   - component: {fileID: 380697585}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LevelGates
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 719617671}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EnterMark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1725,7 +1725,7 @@ GameObject:
   - component: {fileID: 2040698069}
   - component: {fileID: 2040698071}
   - component: {fileID: 2040698070}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Maze_gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}

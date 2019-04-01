@@ -3249,7 +3249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2109208649}
   - component: {fileID: 2109208650}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LevelGates
   m_TagString: Untagged
   m_Icon: {fileID: 0}
