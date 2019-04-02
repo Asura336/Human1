@@ -150,25 +150,30 @@ public class LevelManager : MonoBehaviour, IEventListener
         switch (eventType)
         {
             case EVENT_TYPE.GET_KEY:
-                GlobalHub.Instance.GlobalKeyFlag |= 1 << (int)param;
-                switch ((COLOR_TYPE)param)
-                {
-                    case COLOR_TYPE.RED:  // red
-                        StartCoroutine(_ChangeScene("Level_white_0"));
-                        break;
-                    case COLOR_TYPE.YELLOW:
-                        break;
-                    case COLOR_TYPE.GREEN:
-                        break;
-                    default:
-                        Debug.LogError("Key's value out of range.", this);
-                        return;
-                }
+                OnGetKey((int)param);
                 break;
             case EVENT_TYPE.FALL_OUT_RANGE:
                 OnFallOutRange();
                 break;
             default: return;
+        }
+    }
+
+    void OnGetKey(int param)
+    {
+        GlobalHub.Instance.GlobalKeyFlag |= 1 << param;
+        switch ((COLOR_TYPE)param)
+        {
+            case COLOR_TYPE.RED:  // red
+                StartCoroutine(_ChangeScene("Level_white_0"));
+                break;
+            case COLOR_TYPE.YELLOW:
+                break;
+            case COLOR_TYPE.GREEN:
+                break;
+            default:
+                Debug.LogError("Key's value out of range.", this);
+                return;
         }
     }
 
