@@ -37,7 +37,12 @@ public class ColorGradient : MonoBehaviour, IEventListener
 
     void Gradient()
     {
-        if (m_material != null) { StartCoroutine(GradientMaterial()); }
+        if (m_renderer != null)
+        {
+            m_material = m_renderer.material;
+            StartCoroutine(GradientMaterial());
+        }
+        //if (m_material != null) { StartCoroutine(GradientMaterial()); }
         if (m_light != null) { StartCoroutine(GradientLight()); }
     }
 
