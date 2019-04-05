@@ -6,6 +6,9 @@ using RandMaze;
 
 public class BridgeMaze : BaseMaze
 {
+    /// <summary>
+    /// 键表示为 (迷宫节点下标, 通路方向) 的元组，值为桥的<see cref="GameObject"/>实体
+    /// </summary>
     Dictionary<(int, int), GameObject> m_active = new Dictionary<(int, int), GameObject>();
     Stack<KeyValuePair<(int, int), GameObject>> _dellStack =
         new Stack<KeyValuePair<(int, int), GameObject>>();
@@ -17,33 +20,31 @@ public class BridgeMaze : BaseMaze
         get { return (_bridgePointX, _bridgePointY); }
         set
         {
-            // 根据当前位置实例化桥，不在当前位置的桥需要回收
-            void _DellBridge(KeyValuePair<(int, int), GameObject> pair)
-            {
-                if (m_active.ContainsKey(pair.Key))
-                {
-                    DelBridgeObj(pair.Value);
-                    m_active.Remove(pair.Key);
-                }
-            }
-            void _BuildBridge(int x, int y)
-            {
-                int p = dMaze.ToPoint(x, y);
-                Vector3 pivot = Point2Pos(x, y) + selfTransform.position;
-                InsBridge(p, pivot);  // 检定，实例化
-            }
-
             if (value == (_bridgePointX, _bridgePointY)) { return; }
-
+            // 根据当前位置实例化桥，不在当前位置的桥需要回收
             foreach (KeyValuePair<(int, int), GameObject> single in m_active)
             {
                 if (single.Key.Item1 != dMaze.ToPoint(value.Item1, value.Item2))
                 {
                     _dellStack.Push(single);
                 }
+            }   
+            while (_dellStack.Count != 0)
+            {
+                var pair = _dellStack.Pop();
+                if (m_active.ContainsKey(pair.Key))
+                {
+                    DelBridgeObj(pair.Value);
+                    m_active.Remove(pair.Key);
+                }
             }
-            while (_dellStack.Count != 0) { _DellBridge(_dellStack.Pop()); }
-            _BuildBridge(value.Item1, value.Item2);
+
+            // 检定，实例化
+            InsBridge(
+                dMaze.ToPoint(value.Item1, value.Item2),
+                Point2Pos(value.Item1, value.Item2) + selfTransform.position
+            );
+
             (_bridgePointX, _bridgePointY) = value;
         }
     }

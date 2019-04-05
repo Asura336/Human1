@@ -54,6 +54,8 @@ public class SimpleCameraFreeLook : MonoBehaviour
     public float minRadius = 2;
     public LayerMask raycastLayer;
 
+    public float sphereCastRadius = 0;
+
     [Header("_显示鼠标_")]
     [SerializeField] bool _showCursur = true;
     public bool ShowCursur
@@ -126,11 +128,15 @@ public class SimpleCameraFreeLook : MonoBehaviour
         radius = maxRadius;
         if (!suitLandform) { return; }
         Ray ray = new Ray(Center, selfTransform.position - Center);
-        if (Physics.Raycast(ray, out RaycastHit hit, maxRadius, raycastLayer))
+
+        bool raycast = 
+            Physics.SphereCast(ray, sphereCastRadius, out RaycastHit hit, maxRadius, raycastLayer) ||
+            Physics.Raycast(ray, out hit, maxRadius, raycastLayer);
+        if (raycast)
         {
             radius = Mathf.Min(
                 Vector3.Distance(Center, hit.point), maxRadius);
-        }        
+        }
     }
 
     private void LateUpdate()

@@ -199,6 +199,16 @@ PrefabInstance:
       propertyPath: slerpRotate
       value: 0.9
       objectReference: {fileID: 0}
+    - target: {fileID: 1306841011329130392, guid: 7274c9350f5803547ad704b88fd95ce9,
+        type: 3}
+      propertyPath: sphereCastRadius
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1306841011329130392, guid: 7274c9350f5803547ad704b88fd95ce9,
+        type: 3}
+      propertyPath: minRadius
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 97435902, guid: 7274c9350f5803547ad704b88fd95ce9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7274c9350f5803547ad704b88fd95ce9, type: 3}
