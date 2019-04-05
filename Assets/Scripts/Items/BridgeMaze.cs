@@ -71,6 +71,7 @@ public class BridgeMaze : BaseMaze
         objPool.CollectCell(obj);
     }
 
+    readonly WaitForSeconds checkPosWait = new WaitForSeconds(0.25f);
     IEnumerator CheckPosition(Transform player)
     {
         Vector3 selfPos = selfTransform.position;
@@ -81,7 +82,8 @@ public class BridgeMaze : BaseMaze
 
         while (true)
         {
-            float playerX = player.position.x, playerZ = player.position.z;
+            float playerX = player.position.x;
+            float playerZ = player.position.z;
             bool inSide = playerX > selfPos.x && playerX < selfPos.x + dHeight &&
                 playerZ > selfPos.z && playerZ < selfPos.z + dWidth;
             if (inSide)
@@ -89,7 +91,7 @@ public class BridgeMaze : BaseMaze
                 (int x, int y) = Pos2Point(player.position - selfTransform.position);
                 BridgePoint = (x, y);
             }
-            yield return null;
+            yield return checkPosWait;
         }
     }
 
