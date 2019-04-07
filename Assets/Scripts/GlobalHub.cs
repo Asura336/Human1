@@ -137,6 +137,9 @@ public class GlobalHub
         ReadSaveFile();
     }
 
+    /// <summary>
+    /// 外部调用的存档命令
+    /// </summary>
     public void OnGameSave()
     {
         // TODO:
