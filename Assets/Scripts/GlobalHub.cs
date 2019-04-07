@@ -88,7 +88,9 @@ public class GlobalHub
     public static readonly Vector3 initPlayerPos = new Vector3(1.5f, 0, -2.5f);
     public static readonly Vector3 initPlayerForward = new Vector3(0, 0, 1);
     public const string initPlayerScene = "Level0";
-    public const string savePath = "C:/AppData/";
+    public const string savePath = @"D:\Human1Save";
+    public const string saveFileName = @"Save.svsc";
+
 
     /// <summary>
     /// 事件指针指向台词节点
@@ -131,15 +133,34 @@ public class GlobalHub
 
         // TODO:
         // 从序列化文件建立玩家信息和有唯一标识的物件 Point 预设值
-        CreateInitSaveFile();  // 调试用，建立存档系统后此函数与类似函数应在外部调用
+        //CreateInitSaveFile();  // 调试用，建立存档系统后此函数与类似函数应在外部调用
+        ReadSaveFile();
     }
 
     public void OnGameSave()
     {
         // TODO:
         // 序列化文件存档的动作
+        if (LevelManager.Instance != null)
+        {
+            var player = LevelManager.Instance.PlayerTrans;
+            PlayerPos = player.position;
+            PlayerForward = player.forward;
+        }
+        SerializeTool.ToFile(
+            new FormatSaveFile
+            {
+                scene = PlayerScene,
+                pos = PlayerPos,
+                euler = PlayerForward,
+                cache = Url2Point
+            },
+            savePath, saveFileName);
     }
 
+    /// <summary>
+    /// 写入初始化游戏进度存档
+    /// </summary>
     public void CreateInitSaveFile()
     {
         PlayerPos = initPlayerPos;
@@ -150,11 +171,27 @@ public class GlobalHub
             {"Player", (int)COLOR_TYPE.NULL},
             {"BKeyFlag", 0}
         };
+
+        FormatSaveFile saveFile = new FormatSaveFile
+        {
+            scene = PlayerScene,
+            pos = PlayerPos,
+            euler = PlayerForward,
+            cache = Url2Point
+        };
+        SerializeTool.ToFile(saveFile, savePath, saveFileName);
     }
 
-    void ReadSaveFile()
+    /// <summary>
+    /// 保存游戏进度，没有安全校验
+    /// </summary>
+    public void ReadSaveFile()
     {
-        
+        var obj = SerializeTool.ToObj(savePath + @"\" + saveFileName);
+        PlayerPos = obj.pos;
+        PlayerForward = obj.euler;
+        PlayerScene = obj.scene;
+        Url2Point = obj.cache;
     }
 }
 

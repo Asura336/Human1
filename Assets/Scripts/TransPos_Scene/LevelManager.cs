@@ -79,6 +79,10 @@ public class LevelManager : MonoBehaviour, IEventListener
         p_player.useGravity = true;
         PlayerTrans.position = _cachePlayerPos;
         p_currentScene = scene;
+
+        var gi = GlobalHub.Instance;
+        gi.PlayerScene = scene.name;
+        gi.OnGameSave();
     }
 
     void OnSceneUnloaded(Scene scene)
@@ -151,6 +155,7 @@ public class LevelManager : MonoBehaviour, IEventListener
         {
             case EVENT_TYPE.GET_KEY:
                 OnGetKey((int)param);
+                GlobalHub.Instance.OnGameSave();
                 break;
             case EVENT_TYPE.FALL_OUT_RANGE:
                 OnFallOutRange();
