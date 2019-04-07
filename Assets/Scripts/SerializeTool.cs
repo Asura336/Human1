@@ -8,11 +8,12 @@ using UnityEngine;
 public static class SerializeTool
 {
     /// <summary>
-    /// 序列化字段到文件
+    /// 序列化游戏进度到文件
     /// </summary>
-    /// <param name="dataSource">数据源</param>
-    /// <param name="file">文件名</param>
-    public static void ToFile(FormatSaveFile dataSource,string path, string fileName)
+    /// <param name="dataSource">游戏进度数据源</param>
+    /// <param name="path">保存路径</param>
+    /// <param name="fileName">文件名</param>
+    public static void ToFile(FormatSaveFile dataSource, string path, string fileName)
     {
         if (!Directory.Exists(path)) { Directory.CreateDirectory(path); }
         var file = path + @"\" + fileName;
@@ -37,15 +38,15 @@ public static class SerializeTool
     /// <summary>
     /// 从存档文件到内存，没有安全校验
     /// </summary>
-    /// <param name="path">完整的存档文件路径</param>
+    /// <param name="file">完整的存档文件路径</param>
     /// <returns></returns>
-    public static FormatSaveFile ToObj(string path)
+    public static FormatSaveFile ToObj(string file)
     {
         FormatSaveFile reserve = new FormatSaveFile
         {
             cache = new Dictionary<string, int>()
         };
-        using (StreamReader sr = File.OpenText(path))
+        using (StreamReader sr = File.OpenText(file))
         {
             string s = string.Empty;
             while ((s = sr.ReadLine()) != null)
