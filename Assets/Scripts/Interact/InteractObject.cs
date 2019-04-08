@@ -78,6 +78,7 @@ public class InteractObject : MonoBehaviour, IEnteract, IEventListener
                 EVENT_TYPE.AUDIO, this, SOUND.ENTERACT_FAIL);
             //Debug.Log(Url + " Fail");
         }
+        GlobalHub.Instance.OnGameSave();
         return 0;
     }
 

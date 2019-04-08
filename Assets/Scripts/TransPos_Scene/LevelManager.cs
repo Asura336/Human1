@@ -57,14 +57,14 @@ public class LevelManager : MonoBehaviour, IEventListener
         p_camera = GetComponentInChildren<SimpleCameraFreeLook>();
         PlayerTrans = p_player.transform;
 
-        var gi = GlobalHub.Instance;        
+        var gi = GlobalHub.Instance;
         ChangeScene(gi.PlayerScene, gi.PlayerPos, gi.PlayerForward);
     }
 
     private void OnDestroy()
     {
         // 需要丰富或者修改实现
-        GlobalHub.Instance.OnGameSave();
+        //GlobalHub.Instance.OnGameSave();
 
         SceneManager.sceneLoaded -= OnSceneLoaded;
         SceneManager.sceneUnloaded -= OnSceneUnloaded;
@@ -155,7 +155,7 @@ public class LevelManager : MonoBehaviour, IEventListener
         {
             case EVENT_TYPE.GET_KEY:
                 OnGetKey((int)param);
-                GlobalHub.Instance.OnGameSave();
+                //GlobalHub.Instance.OnGameSave();  // 由 InteractObject.ActDo() 调用
                 break;
             case EVENT_TYPE.FALL_OUT_RANGE:
                 OnFallOutRange();
@@ -190,7 +190,6 @@ public class LevelManager : MonoBehaviour, IEventListener
             ChangeScene("Level_yellow_0", new Vector3(0, 0, 14), Vector3.forward);
             return;
         }
-
         ChangeScene(GlobalHub.initPlayerScene, 
             GlobalHub.initPlayerPos, GlobalHub.initPlayerForward);
     }
