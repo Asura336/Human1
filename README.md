@@ -81,11 +81,33 @@
     - 增加检查游戏事件开关通过后消去场景内某些组件的脚本 DisItemWithGFlag。
     - 迷宫内提示路径的组件进一步完善，等待加入音效。
         - <date = 12> 迷宫内提示音效加入
-- <datr = Mar25>
+- <date = Mar25>
     - 加入新的关卡单元
     - 加入针对 GameObject 的对象池，考虑加入泛用对象池。
-- <datr = Apr1>
+- <date = Apr1>
     - SceneGate 组件及场景节点 "LevelGates" 下的物件应设置层为 "Ignore Raycast"
+- <date = Apr8>
+    - 提取 UI 中的显示文字至配置表 @"Resource\Text\uiTexts" 。默认使用简体汉字，未来可加入本地化设置。
+        - 所有键值对：
+            - newGame：开始游戏
+            - newGameNote：开始新的进度并覆盖旧的进度
+            - loadGame：继续游戏
+            - loadGameNote：从上次结束的位置继续
+            - quitGame：退出游戏
+            - quitGameNote：退出并关闭游戏
+            - colorEnteract：交换颜色
+            - colorSource：触摸色彩源
+            - check：检查
+            - talk：交谈
+        - 上述键名也使用在脚本中。
+    - 增加存取档组件 SerializeTool，作为静态类。函数在 GlobalHub 单例中调用。
+        - SerializeTool.ToFile() 将游戏进度信息序列化至指定文件，如果文件或路径不存在就新建一份。这将覆盖已有的存档文件。
+        - SerializeTool.ToObj() 读取序列化文件至内存，没有安全校验。
+        - SerializeTool.SaveFileExist() 查询指定路径文件是否存在。
+    - 存取档组件集成在 GlobalHub 单例，便于调用及更新游戏进度数据。外部直接通过 GlobalHub.Instance 调用新建、读、写存档指令。
+    - 游戏使用自动保存机制，切换场景及与 InteractObject 实例互动时会保存进度。
+    - 存档目前使用自定义脚本格式，保存内容为场景名称、位置、朝向和来自 GlobalHub.Instance.Url2Point 的缓存信息。
+    - 增加欢迎界面场景 WelcomeScene，作为游戏入口和新建或覆盖、读取游戏进度指令的调用者。鼠标进入按钮范围内显示说明文字，通过事件驱动组件实现。
 
 ## TODO
 
