@@ -244,12 +244,9 @@ public class UiTextNode
     public string key;
     public string valueChs;
 
-    public string GetValue(string language = "chs")
+    public string GetValue()
     {
-        if (language.Equals("chs"))
-        {
-            return valueChs;
-        }
+        // TODO: 设置全局语言字段判断返回值
         return valueChs;
     }
 }
