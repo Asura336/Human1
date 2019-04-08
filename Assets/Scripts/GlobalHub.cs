@@ -141,7 +141,7 @@ public class GlobalHub
         // TODO:
         // 从序列化文件建立玩家信息和有唯一标识的物件 Point 预设值
         //CreateInitSaveFile();  // 调试用，建立存档系统后此函数与类似函数应在外部调用
-        ReadSaveFile();
+        //ReadSaveFile();
     }
 
     /// <summary>

@@ -89,6 +89,7 @@ public class EventManager
 public enum EVENT_TYPE
 {
     NULL,
+    WELCOME_UI,  // 欢迎界面控制说明文字显示
     ENTERACT_UI,  // UI 戳显示
     COLOR_ACT,  // 交换颜色的互动
     COLOR_GRADIENT, // 颜色渐变的物件
