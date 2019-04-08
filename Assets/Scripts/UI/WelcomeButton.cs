@@ -47,7 +47,8 @@ public class WelcomeButton : UIBehaviour, IPointerEnterHandler, IPointerExitHand
                 SceneManager.LoadScene("3C_and_UI");
                 break;
             case Type.LOADGAME:
-                gi.ReadSaveFile();
+                if (gi.SaveFileExist()) { gi.ReadSaveFile(); }
+                else { gi.CreateInitSaveFile(); }
                 SceneManager.LoadScene("3C_and_UI");
                 break;
             case Type.QUITGAME:

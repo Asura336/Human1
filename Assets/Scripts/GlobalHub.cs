@@ -203,6 +203,11 @@ public class GlobalHub
         PlayerScene = obj.scene;
         Url2Point = obj.cache;
     }
+
+    public bool SaveFileExist()
+    {
+        return SerializeTool.SaveFileExist(savePath + @"\" + saveFileName);
+    }
 }
 
 /// <summary>

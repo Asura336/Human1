@@ -71,6 +71,11 @@ public static class SerializeTool
         }
         return reserve;
     }
+
+    public static bool SaveFileExist(string filePath)
+    {
+        return File.Exists(filePath);
+    }
 }
 
 public struct FormatSaveFile
