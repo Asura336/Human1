@@ -1,0 +1,42 @@
+[
+    {
+        "key": "newGame",
+        "valueChs": "开始游戏"
+    },
+    {
+        "key": "newGameNote",
+        "valueChs": "开始新的进度并覆盖旧的进度"
+    },
+    {
+        "key": "loadGame",
+        "valueChs": "继续游戏"
+    },
+    {
+        "key": "loadGameNote",
+        "valueChs": "从上次结束的位置继续"
+    },
+    {
+        "key": "quitGame",
+        "valueChs": "退出游戏"
+    },
+    {
+        "key": "quitGameNote",
+        "valueChs": "退出并关闭游戏"
+    },
+    {
+        "key": "colorEnteract",
+        "valueChs": "交换颜色"
+    },
+    {
+        "key": "colorSource",
+        "valueChs": "触摸色彩源"
+    },
+    {
+        "key": "check",
+        "valueChs": "检查"
+    },
+    {
+        "key": "talk",
+        "valueChs": "交谈"
+    }
+]

@@ -42,7 +42,7 @@ public class TalkPlan : UIBehaviour, IEventListener
         }
         gameObject.SetActive(true);
         // 解析节点内容到 UI
-        selfText.text = GlobalHub.Instance.point2TalkNode[point].talkStrs;
+        selfText.text = GlobalHub.Instance.Point2TextNode[point].talkStrs;
     }
 
     /// <summary>

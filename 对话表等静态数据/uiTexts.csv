@@ -1,0 +1,11 @@
+﻿key,valueChs
+newGame,开始游戏
+newGameNote,开始新的进度并覆盖旧的进度
+loadGame,继续游戏
+loadGameNote,从上次结束的位置继续
+quitGame,退出游戏
+quitGameNote,退出并关闭游戏
+colorEnteract,交换颜色
+colorSource,触摸色彩源
+check,检查
+talk,交谈

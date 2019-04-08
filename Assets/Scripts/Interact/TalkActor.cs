@@ -29,7 +29,7 @@ public class TalkActor : IEnteract
     public int ActDo()
     {
         var ei = EventManager.Instance;
-        var p2T = GlobalHub.Instance.point2TalkNode;
+        var p2T = GlobalHub.Instance.Point2TextNode;
 
         // 播放事件节点
         ei.PostNotification(EVENT_TYPE.TALK, parent, currentPoint);

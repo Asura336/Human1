@@ -95,7 +95,8 @@ public class GlobalHub
     /// <summary>
     /// 事件指针指向台词节点
     /// </summary>
-    public Dictionary<int, TalkNode> point2TalkNode;
+    public Dictionary<int, TalkNode> Point2TextNode { get; private set; }
+    public Dictionary<string, UiTextNode> UiTexts { get; private set; }
 
     /// <summary>
     /// 拥有唯一标识的物体，存放一份状态信息的缓存
@@ -113,10 +114,16 @@ public class GlobalHub
     void GameInit()
     {
         // 读入静态信息
-        string nodeText = Resources.Load<TextAsset>("Text/point2TalkNode").text;
+        string nodeText = Resources.Load<TextAsset>("Text/point2TextNode").text;
         TalkNode[] nodeArray = JsonTool.ToJsonArray<TalkNode>(nodeText);
-        point2TalkNode = new Dictionary<int, TalkNode>();
-        foreach (var node in nodeArray) { point2TalkNode[node.id] = node; }
+        Point2TextNode = new Dictionary<int, TalkNode>();
+        foreach (var node in nodeArray) { Point2TextNode[node.id] = node; }
+
+        string uiTextRaw = Resources.Load<TextAsset>("Text/uiTexts").text;
+        UiTextNode[] uiTextArray = JsonTool.ToJsonArray<UiTextNode>(uiTextRaw);
+        UiTexts = new Dictionary<string, UiTextNode>();
+        foreach (var text in uiTextArray) { UiTexts.Add(text.key, text); }
+
         SoundClips = new AudioClip[]    
         {
             Resources.Load<AudioClip>("Sound/EnteractNull"),  // 0
@@ -210,6 +217,9 @@ public enum COLOR_TYPE
     BLUE
 }
 
+/// <summary>
+/// 对话信息节点
+/// </summary>
 [Serializable]
 public class TalkNode
 {
@@ -222,6 +232,25 @@ public class TalkNode
     {
         return string.Format("\"id\" : {0}, \"next\" : {1}, \"talkStrs\" : {2}, \"nodeCall\" : {3}",
             id, next, talkStrs, nodeCall);
+    }
+}
+
+/// <summary>
+/// UI 使用的文字内容
+/// </summary>
+[Serializable]
+public class UiTextNode
+{
+    public string key;
+    public string valueChs;
+
+    public string GetValue(string language = "chs")
+    {
+        if (language.Equals("chs"))
+        {
+            return valueChs;
+        }
+        return valueChs;
     }
 }
 

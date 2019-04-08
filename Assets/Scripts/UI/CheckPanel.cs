@@ -40,19 +40,19 @@ public class CheckPanel : UIBehaviour, IEventListener
         switch (eType)
         {
             case ENTERACT_TYPE.CLR_EXC:
-                selfText.text = "交换颜色";
+                selfText.text = gi.UiTexts["colorEnteract"].GetValue(); // "交换颜色"
                 bool enteractAwake = (gi.p_enteract != null && gi.p_playerMaterial != null &&
                     gi.p_enteract.Point != (int)gi.PlayerColorType);
                 gameObject.SetActive(enteractAwake);
                 break;
             case ENTERACT_TYPE.CLR_SPR:
-                selfText.text = "触碰色彩源";
+                selfText.text = gi.UiTexts["colorSource"].GetValue(); // "触碰色彩源"
                 enteractAwake = (gi.p_enteract != null && gi.p_playerMaterial != null &&
                     gi.p_enteract.Point != (int)COLOR_TYPE.NULL);
                 gameObject.SetActive(enteractAwake);
                 break;
             case ENTERACT_TYPE.TLK:
-                selfText.text = "对话";
+                selfText.text = gi.UiTexts["talk"].GetValue();  // "对话"
                 enteractAwake = gi.p_enteract != null;
                 gameObject.SetActive(enteractAwake);
                 break;
