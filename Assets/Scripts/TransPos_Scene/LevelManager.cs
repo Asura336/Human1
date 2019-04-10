@@ -59,6 +59,15 @@ public class LevelManager : MonoBehaviour, IEventListener
 
         var gi = GlobalHub.Instance;
         ChangeScene(gi.PlayerScene, gi.PlayerPos, gi.PlayerForward);
+
+        StartCoroutine(SetCameraBack());  // 读档后稳定镜头
+    }
+
+    IEnumerator SetCameraBack()
+    {
+        yield return null;
+        p_camera.SetAlphaBack();
+        p_camera.SetPosForce();
     }
 
     private void OnDestroy()

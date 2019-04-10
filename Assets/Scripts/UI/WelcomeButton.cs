@@ -8,7 +8,7 @@ using UnityEngine.UI;
 /// <summary>
 /// 欢迎界面中的按钮
 /// </summary>
-public class WelcomeButton : UIBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class WelcomeButton : UIBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler
 {
     public Type buttonType;
     Text selfText;
@@ -37,6 +37,9 @@ public class WelcomeButton : UIBehaviour, IPointerEnterHandler, IPointerExitHand
         }
     }
 
+    /// <summary>
+    /// 按钮回调函数，在编辑器中绑定
+    /// </summary>
     public void OnButtonClick()
     {
         var gi = GlobalHub.Instance;
@@ -62,14 +65,19 @@ public class WelcomeButton : UIBehaviour, IPointerEnterHandler, IPointerExitHand
         }
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
     {
         EventManager.Instance.PostNotification(EVENT_TYPE.WELCOME_UI, this, buttonType);
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
     {
         EventManager.Instance.PostNotification(EVENT_TYPE.WELCOME_UI, this, -1);
+    }
+
+    void ISelectHandler.OnSelect(BaseEventData eventData)
+    {
+        EventManager.Instance.PostNotification(EVENT_TYPE.WELCOME_UI, this, buttonType);
     }
 
     // 按钮状态枚举

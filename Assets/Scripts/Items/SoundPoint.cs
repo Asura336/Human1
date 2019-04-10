@@ -13,7 +13,10 @@ public class SoundPoint : MonoBehaviour, IEventListener
         var clips = GlobalHub.Instance.SoundClips;
         if (eventType == EVENT_TYPE.AUDIO && param.Equals(SOUND.POINT_OUT))
         {
-            selfAudioSource.PlayOneShot(clips[(int)param]);
+            if (selfAudioSource != null)
+            {
+                selfAudioSource.PlayOneShot(clips[(int)param]);
+            }
         }
     }
 
