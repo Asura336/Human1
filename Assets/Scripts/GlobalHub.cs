@@ -90,7 +90,7 @@ public class GlobalHub
     public const string initPlayerScene = "Level0";
     public const string savePath = @"D:\Human1Save";
     public const string saveFileName = @"Save.svsc";
-
+    public const string hashFileName = @"SaveHash.svhs";
 
     /// <summary>
     /// 事件指针指向台词节点
@@ -137,11 +137,6 @@ public class GlobalHub
         // 固定随机数种子
         var r = new System.Random();
         MazeSeed = r.Next();
-
-        // TODO:
-        // 从序列化文件建立玩家信息和有唯一标识的物件 Point 预设值
-        //CreateInitSaveFile();  // 调试用，建立存档系统后此函数与类似函数应在外部调用
-        //ReadSaveFile();
     }
 
     /// <summary>
@@ -166,6 +161,9 @@ public class GlobalHub
                 cache = Url2Point
             },
             savePath, saveFileName);
+
+        string hash = SerializeTool.GetMD5Hash(savePath + @"\" + saveFileName);
+        SerializeTool.ToFile(hash, savePath, hashFileName);
     }
 
     /// <summary>
@@ -190,6 +188,9 @@ public class GlobalHub
             cache = Url2Point
         };
         SerializeTool.ToFile(saveFile, savePath, saveFileName);
+
+        string hash = SerializeTool.GetMD5Hash(savePath + @"\" + saveFileName);
+        SerializeTool.ToFile(hash, savePath, hashFileName);
     }
 
     /// <summary>
@@ -207,6 +208,12 @@ public class GlobalHub
     public bool SaveFileExist()
     {
         return SerializeTool.SaveFileExist(savePath + @"\" + saveFileName);
+    }
+
+    public bool SaveFileIntact()
+    {
+        string hash = SerializeTool.GetMD5Hash(savePath + @"\" + saveFileName);
+        return hash.Equals(SerializeTool.ReadFile(savePath + @"\" + hashFileName));
     }
 }
 

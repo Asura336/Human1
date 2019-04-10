@@ -9,3 +9,5 @@ colorEnteract,交换颜色
 colorSource,触摸色彩源
 check,检查
 talk,交谈
+saveNotExist,没有已保存的存档
+saveInvalid,存档文件损坏

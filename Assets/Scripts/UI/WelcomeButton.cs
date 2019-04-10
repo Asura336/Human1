@@ -43,6 +43,7 @@ public class WelcomeButton : UIBehaviour, IPointerEnterHandler, IPointerExitHand
     public void OnButtonClick()
     {
         var gi = GlobalHub.Instance;
+        var ei = EventManager.Instance;
         switch (buttonType)
         {
             case Type.NEWGAME:
@@ -50,9 +51,20 @@ public class WelcomeButton : UIBehaviour, IPointerEnterHandler, IPointerExitHand
                 SceneManager.LoadScene("3C_and_UI");
                 break;
             case Type.LOADGAME:
-                if (gi.SaveFileExist()) { gi.ReadSaveFile(); }
-                else { gi.CreateInitSaveFile(); }
-                SceneManager.LoadScene("3C_and_UI");
+                bool exist = gi.SaveFileExist();
+                bool intact = gi.SaveFileIntact();
+                if (exist && intact)
+                {
+                    gi.ReadSaveFile();
+                    SceneManager.LoadScene("3C_and_UI");
+                }
+                else
+                {
+                    ei.PostNotification(EVENT_TYPE.WELCOME_UI, this,
+                            exist ?
+                            gi.UiTexts["saveInvalid"].GetValue() :
+                            gi.UiTexts["saveNotExist"].GetValue());
+                }
                 break;
             case Type.QUITGAME:
 #if UNITY_EDITOR
@@ -67,22 +79,42 @@ public class WelcomeButton : UIBehaviour, IPointerEnterHandler, IPointerExitHand
 
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
     {
-        EventManager.Instance.PostNotification(EVENT_TYPE.WELCOME_UI, this, buttonType);
+        EventManager.Instance.PostNotification(EVENT_TYPE.WELCOME_UI, this, Type2Str(buttonType));
     }
 
     void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
     {
-        EventManager.Instance.PostNotification(EVENT_TYPE.WELCOME_UI, this, -1);
+        EventManager.Instance.PostNotification(EVENT_TYPE.WELCOME_UI, this, Type2Str(Type.NULL));
     }
 
     void ISelectHandler.OnSelect(BaseEventData eventData)
     {
-        EventManager.Instance.PostNotification(EVENT_TYPE.WELCOME_UI, this, buttonType);
+        EventManager.Instance.PostNotification(EVENT_TYPE.WELCOME_UI, this, Type2Str(buttonType));
+    }
+
+    string Type2Str(Type type)
+    {
+        string key = string.Empty;
+        switch (type)
+        {
+            case Type.NEWGAME:
+                key = "newGameNote";
+                break;
+            case Type.LOADGAME:
+                key = "loadGameNote";
+                break;
+            case Type.QUITGAME:
+                key = "quitGameNote";
+                break;
+            default: return string.Empty;
+        }
+        return GlobalHub.Instance.UiTexts[key].GetValue();
     }
 
     // 按钮状态枚举
     public enum Type
     {
+        NULL,
         NEWGAME,
         LOADGAME,
         QUITGAME

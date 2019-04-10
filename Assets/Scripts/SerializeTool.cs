@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography;
 using System.IO;
 using System.Text;
 using System.Collections;
@@ -31,6 +32,35 @@ public static class SerializeTool
             foreach (var pair in cache)
             {
                 sw.WriteLine($"Pair {pair.Key} {pair.Value}");
+            }
+        }
+    }
+
+    public static void ToFile(string dataSource, string path, string fileName)
+    {
+        if (!Directory.Exists(path)) { Directory.CreateDirectory(path); }
+        var file = path + @"\" + fileName;
+        using (StreamWriter sw = File.CreateText(file))
+        {
+            sw.Write(dataSource);
+        }
+    }
+
+    public static string GetMD5Hash(string file)
+    {
+        if (!File.Exists(file)) { return string.Empty; }
+        using (StreamReader sr = File.OpenText(file))
+        {
+            string txt = sr.ReadToEnd();
+            using (MD5 md5 = MD5.Create())
+            {
+                byte[] data = md5.ComputeHash(Encoding.UTF8.GetBytes(txt));
+                StringBuilder sBuilder = new StringBuilder();
+                for (int i = 0; i < data.Length; i++)
+                {
+                    sBuilder.Append(data[i].ToString("x2"));
+                }
+                return sBuilder.ToString();
             }
         }
     }
@@ -70,6 +100,15 @@ public static class SerializeTool
             }
         }
         return reserve;
+    }
+
+    public static string ReadFile(string file)
+    {
+        if (!File.Exists(file)) { return string.Empty; }
+        using (StreamReader sr = File.OpenText(file))
+        {
+            return sr.ReadToEnd();
+        }
     }
 
     public static bool SaveFileExist(string filePath)

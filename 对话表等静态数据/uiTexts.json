@@ -38,5 +38,13 @@
     {
         "key": "talk",
         "valueChs": "交谈"
+    },
+    {
+        "key": "saveNotExist",
+        "valueChs": "没有已保存的存档"
+    },
+    {
+        "key": "saveInvalid",
+        "valueChs": "存档文件损坏"
     }
 ]
