@@ -84,7 +84,7 @@ public class WelcomeButton : UIBehaviour, IPointerEnterHandler, IPointerExitHand
 
     void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
     {
-        EventManager.Instance.PostNotification(EVENT_TYPE.WELCOME_UI, this, Type2Str(Type.NULL));
+        EventManager.Instance.PostNotification(EVENT_TYPE.WELCOME_UI, this, string.Empty);
     }
 
     void ISelectHandler.OnSelect(BaseEventData eventData)
@@ -114,7 +114,6 @@ public class WelcomeButton : UIBehaviour, IPointerEnterHandler, IPointerExitHand
     // 按钮状态枚举
     public enum Type
     {
-        NULL,
         NEWGAME,
         LOADGAME,
         QUITGAME
