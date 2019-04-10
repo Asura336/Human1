@@ -24,8 +24,8 @@ public static class SerializeTool
             var euler = dataSource.euler;
 
             sw.WriteLine($"Scene {scene}");
-            sw.WriteLine($"Pos {pos.x} {pos.y} {pos.z}");
-            sw.WriteLine($"Euler {euler.x} {euler.y} {euler.z}");
+            sw.WriteLine($"Pos {pos.x:0.000} {pos.y:0.000} {pos.z:0.000}");
+            sw.WriteLine($"Euler {euler.x:0.000} {euler.y:0.000} {euler.z:0.000}");
 
             var cache = dataSource.cache;
             foreach (var pair in cache)
