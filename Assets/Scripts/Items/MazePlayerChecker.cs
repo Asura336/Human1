@@ -40,7 +40,7 @@ public class MazePlayerChecker : MonoBehaviour
      * 每隔指定时间间隔检查玩家的位置，提示迷宫路径。
      */
     readonly int infinity = BaseMaze.infinity;
-    readonly WaitForSeconds checkWait = new WaitForSeconds(0.75f);
+    readonly WaitForSeconds checkWait = new WaitForSeconds(1.25f);
     readonly Vector3[] m_dirs =
         new Vector3[] { Vector3.left, Vector3.forward, Vector3.right, Vector3.back, Vector3.up, };
     IEnumerator CheckPosition(Transform player)
