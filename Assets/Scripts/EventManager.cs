@@ -29,8 +29,7 @@ public class EventManager
     /// <param name="listener">监听器的引用</param>
     public void AddListener(EVENT_TYPE eventType, IEventListener listener)
     {
-        List<IEventListener> listenerList = null;
-        if (listeners.TryGetValue(eventType, out listenerList))
+        if (listeners.TryGetValue(eventType, out List<IEventListener> listenerList))
         {
             listenerList.Add(listener);
             return;
@@ -72,10 +71,6 @@ public class EventManager
             new Dictionary<EVENT_TYPE, List<IEventListener>>();
         foreach (var item in listeners)
         {
-            //for (int i = item.Value.Count - 1; i >= 0; i--)
-            //{
-            //    if (item.Value[i] == null) { item.Value.RemoveAt(i); }
-            //}
             item.Value.RemoveAll((cell) => { return cell == null; });
             if (item.Value.Count != 0) { tmpListeners[item.Key] = item.Value; }
         }
