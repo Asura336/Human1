@@ -15,7 +15,7 @@
 				"IgnoreProject" = "True"
 				"RenderType" = "Opaque"
 			}
-			GrabPass{ }
+			GrabPass{ "_GrabTexture" }
 			Pass {
 				CGPROGRAM
 
