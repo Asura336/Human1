@@ -8,13 +8,15 @@ using UnityEngine.UI;
 /// <summary>
 /// 欢迎界面中的按钮
 /// </summary>
-public class WelcomeButton : UIBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler
+public class WelcomeButton : UIBehaviour, IPointerEnterHandler, ISelectHandler
 {
     public Type buttonType;
     Text selfText;
+    EventSystem m_eventSystem;
 
     protected override void Start()
     {
+        m_eventSystem = EventSystem.current;
         selfText = GetComponentInChildren<Text>();
         selfText.text = getKey(buttonType);
         string getKey(Type type)
@@ -79,12 +81,7 @@ public class WelcomeButton : UIBehaviour, IPointerEnterHandler, IPointerExitHand
 
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
     {
-        EventManager.Instance.PostNotification(EVENT_TYPE.WELCOME_UI, this, Type2Str(buttonType));
-    }
-
-    void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
-    {
-        EventManager.Instance.PostNotification(EVENT_TYPE.WELCOME_UI, this, string.Empty);
+        m_eventSystem.SetSelectedGameObject(gameObject);
     }
 
     void ISelectHandler.OnSelect(BaseEventData eventData)
