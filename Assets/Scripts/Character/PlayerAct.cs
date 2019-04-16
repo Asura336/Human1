@@ -41,13 +41,7 @@ public sealed class PlayerAct : BaseAct, IEventListener
 
     #endregion
 
-    Transform selfTransform;
     AudioSource selfAudioSource2D;
-
-    private void Awake()
-    {
-        selfTransform = transform;
-    }
 
     protected override void Start()
     {

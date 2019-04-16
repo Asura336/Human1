@@ -10,6 +10,7 @@ public class BaseAct : MonoBehaviour
 {
     protected Animator animator;
     protected CharacterController cc;
+    protected Transform selfTransform;
 
     public LayerMask raycastLayer;
     public float raycastRange = 1;
@@ -66,6 +67,7 @@ public class BaseAct : MonoBehaviour
 
     protected virtual void Start()
     {
+        selfTransform = transform;
         animator = GetComponent<Animator>();
         cc = GetComponent<CharacterController>();
     }
@@ -85,9 +87,9 @@ public class BaseAct : MonoBehaviour
     protected virtual void OnAnimatorIK()
     {
         int footOnAir = 2;
-        var ray = new Ray(animator.GetIKPosition(AvatarIKGoal.RightFoot), -transform.up);
+        var ray = new Ray(animator.GetIKPosition(AvatarIKGoal.RightFoot), -selfTransform.up);
         if (Physics.Raycast(ray, out RaycastHit hit, raycastRange, raycastLayer)) { footOnAir--; }
-        ray = new Ray(animator.GetIKPosition(AvatarIKGoal.RightFoot), -transform.up);
+        ray = new Ray(animator.GetIKPosition(AvatarIKGoal.RightFoot), -selfTransform.up);
         if (Physics.Raycast(ray, out hit, raycastRange, raycastLayer)) { footOnAir--; }
 
         if (useGravity) { animator.SetBool(m_IsGrounded, footOnAir == 0 || cc.isGrounded); }
