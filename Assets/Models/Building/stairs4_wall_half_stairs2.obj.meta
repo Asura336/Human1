@@ -12,6 +12,7 @@ ModelImporter:
     3300000: stairs4_wall_half_stairs2
     4300000: stairs4_wall_half_stairs2
     6400000: stairs4_wall_half_stairs2
+    2186277476908879412: ImportLogs
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -67,7 +68,7 @@ ModelImporter:
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15
     secondaryUVHardAngle: 88
-    secondaryUVPackMargin: 8
+    secondaryUVPackMargin: 32
     useFileScale: 1
     previousCalculatedGlobalScale: 1
     hasPreviousCalculatedGlobalScale: 0
