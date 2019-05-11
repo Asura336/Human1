@@ -17,8 +17,13 @@ public class Maze : BaseMaze
     protected override void Start()
     {
         base.Start();
+
+        for (int i = 0; i < _distGraph.Length; i++) { _distGraph[i] = infinity; }
+        dMaze.FindPathUnAlloc(endX, endY, ref _distGraph);
+
         p_enter = dMaze.ToPoint(enterPoint_x, enterPoint_y);
         p_exit = dMaze.ToPoint(exitPoint_x, exitPoint_y);
+        
         StartCoroutine(BuildWallAsync());
     }
 

@@ -60,8 +60,6 @@ public class BaseMaze : MonoBehaviour
     protected virtual void Start()
     {
         _distGraph = new int[dMaze.Capacity];
-        for (int i = 0; i < _distGraph.Length; i++) { _distGraph[i] = infinity; }
-        dMaze.FindPathUnAlloc(endX, endY, ref _distGraph);
     }
 
     public Vector3 Point2Pos(int x, int z)
