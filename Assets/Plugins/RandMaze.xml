@@ -93,6 +93,13 @@
             <param name="y">输入坐标y</param>
             <returns></returns>
         </member>
+        <member name="M:RandMaze.DMaze.Link(System.Int32,System.Int32)">
+            <summary>
+            连接两个相邻的迷宫单元
+            </summary>
+            <param name="p">迷宫单元下标</param>
+            <param name="q">迷宫单元下标</param>
+        </member>
         <member name="M:RandMaze.DMaze.BuildHole">
             <summary>
             处理空洞信息，使空洞范围内成员全连通
